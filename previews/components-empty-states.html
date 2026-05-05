@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #080808; font-family: 'DM Sans', sans-serif; padding: 24px; color: #F0F0F0; }
+.label { font-size: 10px; font-family: 'DM Mono', monospace; color: #555; margin-bottom: 10px; letter-spacing: 0.5px; text-transform: uppercase; }
+.row { display: flex; gap: 24px; flex-wrap: wrap; }
+.frame { width: 320px; height: 420px; background: #080808; border: 1px solid #1E1E1E; border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 32px; text-align: center; }
+.frame .copy { color: #888; font-size: 14px; line-height: 1.5; }
+.empty-icon { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: #2A2A2A; margin-bottom: 16px; letter-spacing: 1px; }
+.frame-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.8px; color: #F0F0F0; margin-bottom: 8px; text-transform: uppercase; }
+.note { margin-top: 16px; font-size: 11px; color: #888; line-height: 1.6; max-width: 700px; }
+.note code { font-family: 'DM Mono', monospace; color: #C8A44A; font-size: 10px; }
+.frame .label-cap { font-family: 'DM Mono', monospace; font-size: 10px; color: #444; margin-top: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+</style></head><body>
+
+<div class="label">Empty states — concise, single-sentence, no exclamation marks</div>
+<div class="row">
+
+  <div>
+    <div style="font-size:11px;color:#888;margin-bottom:8px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;">match_hub.no_upcoming</div>
+    <div class="frame">
+      <div>
+        <div class="empty-icon">—</div>
+        <div class="copy">No upcoming fixtures</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div style="font-size:11px;color:#888;margin-bottom:8px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;">match_hub.no_match_title</div>
+    <div class="frame">
+      <div>
+        <div class="frame-title">No match this weekend</div>
+        <div class="copy">Next up: Saracens vs Bath</div>
+        <div class="copy" style="margin-top:24px;font-size:12px;color:#444;font-family:'DM Mono',monospace;">[fixture card]</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div style="font-size:11px;color:#888;margin-bottom:8px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;">news.no_articles</div>
+    <div class="frame">
+      <div class="copy">No articles yet</div>
+    </div>
+  </div>
+
+  <div>
+    <div style="font-size:11px;color:#888;margin-bottom:8px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;">videos.no_videos</div>
+    <div class="frame">
+      <div class="copy">No videos yet</div>
+    </div>
+  </div>
+
+  <div>
+    <div style="font-size:11px;color:#888;margin-bottom:8px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;">standings.no_standings</div>
+    <div class="frame">
+      <div class="copy">No standings available.</div>
+    </div>
+  </div>
+
+  <div>
+    <div style="font-size:11px;color:#888;margin-bottom:8px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;">match_hub.season_ended_title</div>
+    <div class="frame">
+      <div>
+        <div class="frame-title">Season complete</div>
+        <div class="copy">All competitions have wrapped for this season. See you next year.</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div style="font-size:11px;color:#888;margin-bottom:8px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;">teams.no_results</div>
+    <div class="frame">
+      <div>
+        <div class="copy">No teams found for "London"</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div style="font-size:11px;color:#888;margin-bottom:8px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;">match_hub.filler_title</div>
+    <div class="frame">
+      <div>
+        <div class="frame-title">This hub is in the sin bin… for now.</div>
+        <div class="copy" style="margin-bottom:24px;">Check back soon — the next match hub will be along shortly.</div>
+        <div class="copy" style="font-size:11px;color:#666;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;">Next up</div>
+        <div class="copy" style="font-size:12px;color:#444;font-family:'DM Mono',monospace;margin-top:8px;">[fixture]</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="note">
+  Empty states are intentionally minimal — a centred sentence in <code>colorScheme.onSurfaceVariant</code> with optional Bebas Neue heading. No illustrations, no hand-drawn icons, no exclamation marks. Title + body pattern is reserved for "blocking" empties (no match this weekend, season complete, filler hub) where the user should know what's next. Single-line copy is enough for list emptiness (<code>news.no_articles</code>, <code>videos.no_videos</code>). All copy lives in <code>app_strings_defaults.dart</code> and is CMS-overridable.
+</div>
+
+</body></html>

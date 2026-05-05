@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #080808; font-family: 'DM Sans', sans-serif; padding: 24px; color: #F0F0F0; }
+.label { font-size: 10px; font-family: 'DM Mono', monospace; color: #555; margin-bottom: 10px; letter-spacing: 0.5px; text-transform: uppercase; }
+.frame { width: 380px; background: #080808; border: 1px solid #1E1E1E; border-radius: 16px; overflow: hidden; }
+.league-dropdown { background: #1A1A1A; padding: 8px 16px; display: flex; align-items: center; font-size: 14px; color: #F0F0F0; }
+.league-dropdown::after { content: "▾"; margin-left: auto; color: #888; }
+.pool-tabs { background: #1A1A1A; display: flex; }
+.pool-tab { flex: 1; padding: 10px 16px; text-align: center; font-size: 13px; color: #888; border-bottom: 2px solid transparent; }
+.pool-tab.sel { color: #1B3A6B; font-weight: 700; border-bottom-color: #1B3A6B; }
+.league-title { padding: 16px 16px 8px; font-family: 'Bebas Neue', sans-serif; font-size: 36px; line-height: 1.05; letter-spacing: 1px; text-transform: uppercase; color: #F0F0F0; }
+.header-row { background: #1A1A1A; padding: 10px 16px; display: flex; align-items: center; }
+.header-row .col { font-size: 11px; font-weight: 700; letter-spacing: 0.5px; color: #888; text-transform: uppercase; }
+.col-team { flex: 1; }
+.col-pl { width: 36px; text-align: center; }
+.col-pd { width: 48px; text-align: center; }
+.col-pts { width: 40px; text-align: center; }
+.data-row { padding: 11px 16px; display: flex; align-items: center; border-bottom: 0.5px solid #2A2A2A; }
+.data-row.high { background: rgba(27, 58, 107, 0.4); }
+.data-row .team { flex: 1; font-size: 14px; font-weight: 500; color: #F0F0F0; }
+.data-row .num { font-family: 'DM Mono', monospace; font-size: 13px; color: #F0F0F0; }
+.data-row.high .team { font-weight: 700; }
+.data-row .pts { color: #1B3A6B; font-weight: 700; }
+.note { margin-top: 16px; max-width: 380px; font-size: 11px; color: #888; line-height: 1.6; }
+.note code { font-family: 'DM Mono', monospace; color: #C8A44A; font-size: 10px; }
+</style></head><body>
+
+<div class="label">Standings table — pool tabs + dense data grid</div>
+<div style="display:flex;gap:24px;align-items:flex-start;">
+
+<div class="frame">
+  <div class="league-dropdown">Premiership Rugby</div>
+  <div class="pool-tabs">
+    <div class="pool-tab sel">Pool A</div>
+    <div class="pool-tab">Pool B</div>
+  </div>
+  <div class="league-title">Premiership Rugby</div>
+  <div class="header-row">
+    <div class="col col-team">Team</div>
+    <div class="col col-pl">PL</div>
+    <div class="col col-pd">PD</div>
+    <div class="col col-pts">Pts</div>
+  </div>
+  <div class="data-row">
+    <div class="team">Saracens</div>
+    <div class="num col-pl">12</div>
+    <div class="num col-pd">+148</div>
+    <div class="num pts col-pts">52</div>
+  </div>
+  <div class="data-row">
+    <div class="team">Bristol Bears</div>
+    <div class="num col-pl">12</div>
+    <div class="num col-pd">+96</div>
+    <div class="num pts col-pts">48</div>
+  </div>
+  <div class="data-row high">
+    <div class="team">Bath</div>
+    <div class="num col-pl">12</div>
+    <div class="num col-pd">+72</div>
+    <div class="num pts col-pts">45</div>
+  </div>
+  <div class="data-row">
+    <div class="team">Northampton Saints</div>
+    <div class="num col-pl">12</div>
+    <div class="num col-pd">+24</div>
+    <div class="num pts col-pts">38</div>
+  </div>
+  <div class="data-row">
+    <div class="team">Sale Sharks</div>
+    <div class="num col-pl">12</div>
+    <div class="num col-pd">+18</div>
+    <div class="num pts col-pts">36</div>
+  </div>
+  <div class="data-row">
+    <div class="team">Harlequins</div>
+    <div class="num col-pl">12</div>
+    <div class="num col-pd">−4</div>
+    <div class="num pts col-pts">29</div>
+  </div>
+  <div class="data-row">
+    <div class="team">Exeter Chiefs</div>
+    <div class="num col-pl">12</div>
+    <div class="num col-pd">−18</div>
+    <div class="num pts col-pts">27</div>
+  </div>
+  <div class="data-row">
+    <div class="team">Leicester Tigers</div>
+    <div class="num col-pl">12</div>
+    <div class="num col-pd">−42</div>
+    <div class="num pts col-pts">22</div>
+  </div>
+  <div class="data-row">
+    <div class="team">Gloucester</div>
+    <div class="num col-pl">12</div>
+    <div class="num col-pd">−96</div>
+    <div class="num pts col-pts">14</div>
+  </div>
+  <div class="data-row" style="border-bottom:0;">
+    <div class="team">Newcastle Falcons</div>
+    <div class="num col-pl">12</div>
+    <div class="num col-pd">−198</div>
+    <div class="num pts col-pts">8</div>
+  </div>
+</div>
+
+<div class="note">
+  Standings is the canonical <strong>data-table pattern</strong> for any tabular data in the app. Fixed numeric column widths (PL=36, PD=48, Pts=40) sized for the narrowest phone viewport — team name is the only flexible column. League name is rendered with the same Bebas Neue display-sm style as <code>AppSection</code> headings. Header row uses <code>colorScheme.surfaceContainerHighest</code> with <code>labelSmall</code> + 0.5px letter-spacing. Numeric cells use <code>AppTypography.monoSm</code>. The user's selected team row is tinted with <code>colorScheme.primaryContainer</code> and bumped to <code>FontWeight.bold</code>. Sort: <code>totalPoints desc</code>, then <code>pointsDifference desc</code>. Pool tab bar appears only when there are 2+ pools; league dropdown appears only when there are 2+ leagues. Use this pattern for any future leaderboard/stats grids.
+</div>
+
+</div>
+</body></html>

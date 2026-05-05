@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>My Rugby App — Email Template</title>
+<style>
+/* Email-safe CSS — inline-style compatible, no flexbox/grid */
+* { box-sizing: border-box; }
+body { margin: 0; padding: 0; background: #F5F5F5; font-family: 'Helvetica Neue', Arial, sans-serif; -webkit-text-size-adjust: 100%; }
+
+.outer { background: #F5F5F5; padding: 32px 16px; }
+.container { max-width: 560px; margin: 0 auto; background: #FFFFFF; border-radius: 12px; overflow: hidden; }
+
+/* Header — team primary colour */
+.header { background: #004A8F; padding: 24px 28px; }
+.header-logo { display: flex; align-items: center; gap: 10px; }
+.logo-mark { width: 32px; height: 32px; background: rgba(255,255,255,0.2); border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; }
+.header-team { font-size: 16px; font-weight: 700; color: #FFFFFF; letter-spacing: 0.3px; }
+.header-badge { display: inline-block; background: rgba(255,255,255,0.2); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; margin-top: 12px; }
+.header-headline { font-size: 24px; font-weight: 800; color: #FFFFFF; line-height: 1.3; margin-top: 8px; }
+.header-sub { font-size: 13px; color: rgba(255,255,255,0.75); margin-top: 5px; line-height: 1.5; }
+
+/* Score block */
+.score-block { background: #F8F8F8; border-bottom: 1px solid #EEEEEE; padding: 18px 28px; text-align: center; }
+.score-teams { display: flex; align-items: center; justify-content: center; gap: 20px; }
+.team-col { text-align: center; min-width: 80px; }
+.team-name { font-size: 11px; font-weight: 700; color: #888888; text-transform: uppercase; letter-spacing: 0.5px; }
+.score-num { font-size: 36px; font-weight: 800; color: #111111; font-family: 'Courier New', monospace; letter-spacing: -1px; }
+.score-sep { font-size: 24px; color: #CCCCCC; font-weight: 300; }
+.result-pill { display: inline-block; background: #E8F5E9; color: #2E7D32; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 10px; border-radius: 4px; margin-top: 8px; }
+
+/* Body */
+.body { padding: 24px 28px; }
+.section-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: #BBBBBB; margin-bottom: 10px; }
+.body-text { font-size: 14px; color: #333333; line-height: 1.65; }
+.divider { height: 1px; background: #EEEEEE; margin: 20px 0; }
+
+/* CTA button — team colour */
+.cta-wrap { text-align: center; padding: 4px 0 8px; }
+.cta { display: inline-block; background: #004A8F; color: #FFFFFF; font-size: 13px; font-weight: 700; text-decoration: none; padding: 12px 28px; border-radius: 8px; letter-spacing: 0.2px; }
+
+/* Stats row */
+.stats-row { display: flex; gap: 0; }
+.stat { flex: 1; text-align: center; padding: 12px 8px; border-right: 1px solid #EEEEEE; }
+.stat:last-child { border-right: none; }
+.stat-val { font-size: 22px; font-weight: 800; color: #111111; font-family: 'Courier New', monospace; }
+.stat-lbl { font-size: 10px; color: #AAAAAA; text-transform: uppercase; letter-spacing: 0.4px; margin-top: 3px; }
+
+/* Footer */
+.footer { background: #F8F8F8; padding: 16px 28px; text-align: center; border-top: 1px solid #EEEEEE; }
+.footer-text { font-size: 11px; color: #AAAAAA; line-height: 1.6; }
+.footer-link { color: #004A8F; text-decoration: none; }
+</style></head><body>
+<div class="outer">
+  <div class="container">
+
+    <!-- Header — team primary -->
+    <div class="header">
+      <div class="header-logo">
+        <div class="logo-mark">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="12" rx="5" ry="9" transform="rotate(-30 12 12)" stroke="white" stroke-width="1.5"/><line x1="3" y1="12" x2="21" y2="12" stroke="white" stroke-width="1.5"/></svg>
+        </div>
+        <span class="header-team">Bath Rugby</span>
+      </div>
+      <div class="header-badge">✓ Full Time</div>
+      <div class="header-headline">Bath 27 – 17 Saracens</div>
+      <div class="header-sub">Gallagher Premiership · The Rec · Saturday 19 Apr 2025</div>
+    </div>
+
+    <!-- Score summary -->
+    <div class="score-block">
+      <div class="score-teams">
+        <div class="team-col">
+          <div class="team-name">Bath Rugby</div>
+          <div class="score-num">27</div>
+        </div>
+        <div class="score-sep">–</div>
+        <div class="team-col">
+          <div class="team-name">Saracens</div>
+          <div class="score-num">17</div>
+        </div>
+      </div>
+      <div><span class="result-pill">✓ Win + Bonus Point</span></div>
+    </div>
+
+    <!-- Key stats -->
+    <div style="border-bottom:1px solid #EEEEEE">
+      <div class="stats-row">
+        <div class="stat"><div class="stat-val">4</div><div class="stat-lbl">Tries</div></div>
+        <div class="stat"><div class="stat-val">3</div><div class="stat-lbl">Conversions</div></div>
+        <div class="stat"><div class="stat-val">3</div><div class="stat-lbl">Penalties</div></div>
+        <div class="stat"><div class="stat-val">72%</div><div class="stat-lbl">Possession</div></div>
+      </div>
+    </div>
+
+    <!-- Article body -->
+    <div class="body">
+      <div class="section-label">Match Report</div>
+      <div class="body-text">
+        Bath Rugby secured a crucial bonus-point victory over Saracens at The Rec on Saturday afternoon, with Orlando Bailey influential throughout in a commanding 27–17 win that keeps them top of the Gallagher Premiership.
+      </div>
+      <div class="divider"></div>
+      <div class="cta-wrap">
+        <a href="#" class="cta">Read Full Match Report</a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-text">
+        You're receiving this because you follow Bath Rugby on My Rugby App.<br>
+        <a href="#" class="footer-link">Manage notifications</a> · <a href="#" class="footer-link">Unsubscribe</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #111111; font-family: 'DM Sans', sans-serif; padding: 20px; display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-start; }
+.group { display: flex; flex-direction: column; gap: 8px; }
+.label { font-size: 10px; color: #555; font-family: 'DM Mono', monospace; margin-bottom: 4px; }
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 4px 8px; border-radius: 4px;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.5px;
+  text-transform: uppercase; line-height: 1.2;
+}
+.dot { width: 7px; height: 7px; border-radius: 50%; background: white; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.25} }
+.dot-anim { animation: pulse 900ms ease-in-out infinite; }
+.pill { border-radius: 32px; }
+</style></head><body>
+<div class="group">
+  <div class="label">AppBadge.live</div>
+  <div class="badge" style="background:#D32F2F;color:#fff">
+    <span class="dot dot-anim"></span>LIVE
+  </div>
+  <div class="label">AppBadge.status</div>
+  <div class="badge" style="background:#2E7D32;color:#fff">SUCCESS</div>
+  <div class="badge" style="background:#F57F17;color:#000">WARNING</div>
+  <div class="label">AppCategoryBadge</div>
+  <div class="badge" style="background:rgba(200,164,74,0.15);color:#C8A44A">Match Report</div>
+  <div class="badge" style="background:rgba(200,164,74,0.15);color:#C8A44A">Interview</div>
+  <div class="badge" style="background:rgba(200,164,74,0.15);color:#C8A44A">Video</div>
+</div>
+<div class="group">
+  <div class="label">Match Hub phase pills</div>
+  <div class="badge pill" style="background:#E63946;color:#fff">
+    <span class="dot dot-anim"></span>LIVE
+  </div>
+  <div class="badge pill" style="background:#FFB74D;color:#fff">HT</div>
+  <div class="badge pill" style="background:#2A2A44;color:#fff">PRE</div>
+  <div class="badge pill" style="background:#2A2A44;color:#fff">FT</div>
+</div>
+</body></html>

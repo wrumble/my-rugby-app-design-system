@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #080808; font-family: 'DM Sans', sans-serif; padding: 24px; color: #F0F0F0; }
+.label { font-size: 10px; font-family: 'DM Mono', monospace; color: #555; margin-bottom: 10px; letter-spacing: 0.5px; text-transform: uppercase; }
+.frame { width: 380px; background: #080808; border: 1px solid #1E1E1E; border-radius: 16px; overflow: hidden; }
+/* AppSection */
+.section { display: block; }
+.section-head { display: flex; align-items: center; padding: 16px 16px 8px; }
+.section-title { flex: 1; font-family: 'Bebas Neue', sans-serif; font-size: 36px; line-height: 1.1; letter-spacing: 1px; color: #F0F0F0; text-transform: uppercase; }
+.see-all { font-size: 13px; color: #888; font-weight: 600; }
+.cards-row { display: flex; gap: 10px; padding: 0 16px 8px; overflow-x: auto; }
+.card { flex: 0 0 160px; background: #111; border-radius: 16px; padding: 12px; }
+.card .img { background: #1A1A1A; height: 90px; border-radius: 10px; margin-bottom: 8px; display:flex;align-items:center;justify-content:center; font-family:'DM Mono',monospace;font-size:9px;color:#444;}
+.card .tag { font-size: 10px; font-weight: 700; color: #C8A44A; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+.card .title { font-size: 13px; font-weight: 700; color: #F0F0F0; line-height: 1.4; }
+.notes { margin-top: 16px; max-width: 380px; font-size: 11px; color: #888; line-height: 1.6; }
+.notes code { font-family: 'DM Mono', monospace; color: #C8A44A; font-size: 10px; }
+</style></head><body>
+<div class="label">AppSection</div>
+<div class="frame">
+  <section class="section">
+    <div class="section-head">
+      <div class="section-title">Latest News</div>
+      <div class="see-all">See all</div>
+    </div>
+    <div class="cards-row">
+      <div class="card"><div class="img">[hero]</div><div class="tag">Match Report</div><div class="title">Bath secure thrilling late win at The Rec</div></div>
+      <div class="card"><div class="img">[hero]</div><div class="tag">Interview</div><div class="title">Ben Spencer on the season so far</div></div>
+      <div class="card"><div class="img">[hero]</div><div class="tag">Preview</div><div class="title">Bristol Bears — Premiership Preview</div></div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-head">
+      <div class="section-title">Fixtures</div>
+    </div>
+    <div style="padding: 0 16px 16px; font-size: 12px; color: #888; font-family:'DM Mono',monospace;">[fixtures list slot]</div>
+  </section>
+</div>
+<div class="notes">
+  <code>AppSection</code> wraps screen-level content blocks. Heading is uppercase Bebas Neue display-sm 36pt with optional trailing widget (e.g. &ldquo;See all&rdquo;). Default horizontal padding 16pt; <code>top: 16, bottom: 8</code> injected automatically. Use this for any new top-level section.
+</div>
+</body></html>

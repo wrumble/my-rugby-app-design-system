@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #111111; font-family: 'DM Sans', sans-serif; padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+
+.section-label { font-family: 'DM Mono', monospace; font-size: 9px; color: #555; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 6px; }
+
+/* Contrast rows */
+.contrast-grid { display: flex; flex-direction: column; gap: 5px; }
+.row { display: flex; align-items: center; gap: 8px; }
+.swatch { width: 28px; height: 20px; border-radius: 4px; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.05); }
+.ratio { font-family: 'DM Mono', monospace; font-size: 10px; width: 46px; flex-shrink: 0; }
+.pass-aaa { color: #4CAF50; }
+.pass-aa  { color: #81C784; }
+.fail     { color: #E63946; text-decoration: line-through; }
+.fixed    { color: #FFB74D; }
+.desc { font-size: 10px; color: #888; }
+
+/* Colorblind row */
+.cb-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.cb-chip { display: inline-flex; align-items: center; gap: 4px; padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+.dot { width: 6px; height: 6px; border-radius: 50%; }
+@keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.2} }
+.pulse { animation: pulse 900ms ease-in-out infinite; }
+
+/* Line height demo */
+.lh-row { display: flex; gap: 12px; align-items: flex-start; }
+.lh-block { background: #1A1A1A; border-radius: 8px; padding: 8px 10px; flex: 1; }
+.lh-label { font-size: 9px; font-family: 'DM Mono', monospace; color: #555; margin-bottom: 4px; }
+.lh-text { color: #F0F0F0; }
+</style></head><body>
+
+<div class="section-label">Contrast audit — WCAG AA = 4.5:1 normal text / 3:1 large</div>
+<div class="contrast-grid">
+  <div class="row">
+    <div class="swatch" style="background:#F0F0F0"></div>
+    <div class="ratio pass-aaa">17.6:1</div>
+    <div class="desc">textPrimary #F0F0F0 on #080808 — AAA</div>
+  </div>
+  <div class="row">
+    <div class="swatch" style="background:#888888"></div>
+    <div class="ratio pass-aa">5.6:1</div>
+    <div class="desc">textSecondary #888888 on #080808 — AA</div>
+  </div>
+  <div class="row">
+    <div class="swatch" style="background:#444444"></div>
+    <div class="ratio fail">2.1:1</div>
+    <div class="desc">textTertiary old #444444 — FAIL ✕</div>
+  </div>
+  <div class="row">
+    <div class="swatch" style="background:#7E7E7E"></div>
+    <div class="ratio fixed">4.9:1</div>
+    <div class="desc">textTertiary new #7E7E7E — AA ✓</div>
+  </div>
+  <div class="row">
+    <div class="swatch" style="background:#556677"></div>
+    <div class="ratio fail">2.9:1</div>
+    <div class="desc">navy textMuted old #556677 — FAIL ✕</div>
+  </div>
+  <div class="row">
+    <div class="swatch" style="background:#7A8FA3"></div>
+    <div class="ratio fixed">5.1:1</div>
+    <div class="desc">navy textMuted new #7A8FA3 — AA ✓</div>
+  </div>
+  <div class="row">
+    <div class="swatch" style="background:#E63946"></div>
+    <div class="ratio fail">4.1:1</div>
+    <div class="desc">tab active #E63946 on navy — FAIL ✕</div>
+  </div>
+  <div class="row">
+    <div class="swatch" style="background:#FF6B78"></div>
+    <div class="ratio fixed">6.2:1</div>
+    <div class="desc">tab active #FF6B78 on navy — AA ✓</div>
+  </div>
+</div>
+
+<div class="section-label">Colorblind safety — always label + icon alongside colour</div>
+<div class="cb-row">
+  <div class="cb-chip" style="background:#D32F2F;color:#fff">
+    <span class="dot pulse" style="background:#fff"></span>LIVE
+  </div>
+  <div class="cb-chip" style="background:#2E7D32;color:#fff">✓ WIN</div>
+  <div class="cb-chip" style="background:#F57F17;color:#000">⚠ CAUTION</div>
+  <div class="cb-chip" style="background:#1B3A6B;color:#fff">— PENDING</div>
+  <span style="font-size:9px;color:#555;font-family:'DM Mono',monospace">dot+text, checkmark, triangle, dash — never colour alone</span>
+</div>
+
+<div class="section-label">Line height — WCAG 1.4.12 (min 1.5× body, 1.4× heading)</div>
+<div class="lh-row">
+  <div class="lh-block">
+    <div class="lh-label">body · 1.6</div>
+    <div class="lh-text" style="font-size:12px;line-height:1.6">The scrum-half made a break in the 72nd minute to seal the result at The Rec.</div>
+  </div>
+  <div class="lh-block">
+    <div class="lh-label">heading · 1.35</div>
+    <div class="lh-text" style="font-size:15px;font-weight:700;line-height:1.35">Bath Rugby Secure Late Win at Home</div>
+  </div>
+</div>
+
+</body></html>

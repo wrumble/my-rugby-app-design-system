@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #080808; font-family: 'DM Sans', sans-serif; padding: 20px; display: flex; flex-direction: column; gap: 18px; }
+.label { font-family: 'DM Mono', monospace; font-size: 9px; color: #5A5A5A; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 8px; }
+
+/* Team row */
+.team-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.team-demo { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; width: 110px; }
+.team-name { font-size: 10px; font-weight: 700; color: #8A8A8A; }
+.mini-ui { background: #0F0F0F; border-radius: 8px; border: 1px solid #1E1E1E; overflow: hidden; width: 100%; }
+.mini-bar { height: 28px; display: flex; align-items: center; padding: 0 8px; gap: 6px; }
+.mini-logo { width: 16px; height: 16px; border-radius: 8px; flex-shrink: 0; }
+.mini-title { font-size: 10px; font-weight: 700; color: #F2F2F2; }
+.mini-content { padding: 6px 8px; border-top: 1px solid #1E1E1E; }
+.mini-badge { display: inline-block; padding: 2px 6px; border-radius: 3px; font-size: 8px; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; }
+.mini-nav { display: flex; padding: 4px 0; border-top: 1px solid #1E1E1E; }
+.mini-nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.mini-dot { width: 14px; height: 3px; border-radius: 2px; }
+.mini-dot-inactive { background: #2A2A2A; }
+.mini-nav-label { font-size: 7px; font-weight: 700; }
+
+/* Chrome section */
+.chrome-row { display: flex; gap: 8px; }
+.chrome-item { flex: 1; }
+.chrome-block { height: 32px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.04); }
+.chrome-label { font-size: 9px; color: #5A5A5A; margin-top: 4px; font-family: 'DM Mono', monospace; }
+.chrome-hex { font-size: 9px; color: #3A3A3A; font-family: 'DM Mono', monospace; }
+</style></head><body>
+
+<div>
+  <div class="label">Chrome layer — never changes regardless of team</div>
+  <div class="chrome-row">
+    <div class="chrome-item"><div class="chrome-block" style="background:#080808"></div><div class="chrome-label">--bg</div><div class="chrome-hex">#080808</div></div>
+    <div class="chrome-item"><div class="chrome-block" style="background:#0F0F0F"></div><div class="chrome-label">--surface-1</div><div class="chrome-hex">#0F0F0F</div></div>
+    <div class="chrome-item"><div class="chrome-block" style="background:#161616"></div><div class="chrome-label">--surface-2</div><div class="chrome-hex">#161616</div></div>
+    <div class="chrome-item"><div class="chrome-block" style="background:#1E1E1E"></div><div class="chrome-label">--border</div><div class="chrome-hex">#1E1E1E</div></div>
+    <div class="chrome-item"><div class="chrome-block" style="background:#F2F2F2"></div><div class="chrome-label">--text-1</div><div class="chrome-hex">#F2F2F2</div></div>
+    <div class="chrome-item"><div class="chrome-block" style="background:#8A8A8A"></div><div class="chrome-label">--text-2</div><div class="chrome-hex">#8A8A8A</div></div>
+  </div>
+</div>
+
+<div>
+  <div class="label">--color-accent — the only team colour in the UI</div>
+  <div class="team-row">
+    <!-- Bath Rugby -->
+    <div class="team-demo">
+      <div class="mini-ui">
+        <div class="mini-bar" style="background:#0F0F0F">
+          <div class="mini-logo" style="background:#004A8F"></div>
+          <div class="mini-title">Bath Rugby</div>
+        </div>
+        <div class="mini-content">
+          <div class="mini-badge" style="background:rgba(0,74,143,0.15);color:#4A90D9">Match Report</div>
+        </div>
+        <div class="mini-nav">
+          <div class="mini-nav-item"><div class="mini-dot" style="background:#004A8F"></div><div class="mini-nav-label" style="color:#004A8F">News</div></div>
+          <div class="mini-nav-item"><div class="mini-dot mini-dot-inactive"></div><div class="mini-nav-label" style="color:#5A5A5A">Tables</div></div>
+          <div class="mini-nav-item"><div class="mini-dot mini-dot-inactive"></div><div class="mini-nav-label" style="color:#5A5A5A">Videos</div></div>
+        </div>
+      </div>
+      <div class="team-name">#004A8F</div>
+    </div>
+    <!-- Harlequins -->
+    <div class="team-demo">
+      <div class="mini-ui">
+        <div class="mini-bar" style="background:#0F0F0F">
+          <div class="mini-logo" style="background:#E91F8A"></div>
+          <div class="mini-title">Harlequins</div>
+        </div>
+        <div class="mini-content">
+          <div class="mini-badge" style="background:rgba(233,31,138,0.15);color:#E91F8A">Match Report</div>
+        </div>
+        <div class="mini-nav">
+          <div class="mini-nav-item"><div class="mini-dot" style="background:#E91F8A"></div><div class="mini-nav-label" style="color:#E91F8A">News</div></div>
+          <div class="mini-nav-item"><div class="mini-dot mini-dot-inactive"></div><div class="mini-nav-label" style="color:#5A5A5A">Tables</div></div>
+          <div class="mini-nav-item"><div class="mini-dot mini-dot-inactive"></div><div class="mini-nav-label" style="color:#5A5A5A">Videos</div></div>
+        </div>
+      </div>
+      <div class="team-name">#E91F8A</div>
+    </div>
+    <!-- Leicester -->
+    <div class="team-demo">
+      <div class="mini-ui">
+        <div class="mini-bar" style="background:#0F0F0F">
+          <div class="mini-logo" style="background:#004B23"></div>
+          <div class="mini-title">Leicester</div>
+        </div>
+        <div class="mini-content">
+          <div class="mini-badge" style="background:rgba(0,75,35,0.2);color:#3CB371">Match Report</div>
+        </div>
+        <div class="mini-nav">
+          <div class="mini-nav-item"><div class="mini-dot" style="background:#2D8A50"></div><div class="mini-nav-label" style="color:#2D8A50">News</div></div>
+          <div class="mini-nav-item"><div class="mini-dot mini-dot-inactive"></div><div class="mini-nav-label" style="color:#5A5A5A">Tables</div></div>
+          <div class="mini-nav-item"><div class="mini-dot mini-dot-inactive"></div><div class="mini-nav-label" style="color:#5A5A5A">Videos</div></div>
+        </div>
+      </div>
+      <div class="team-name">#004B23</div>
+    </div>
+    <!-- Sale Sharks -->
+    <div class="team-demo">
+      <div class="mini-ui">
+        <div class="mini-bar" style="background:#0F0F0F">
+          <div class="mini-logo" style="background:#0060A9"></div>
+          <div class="mini-title">Sale Sharks</div>
+        </div>
+        <div class="mini-content">
+          <div class="mini-badge" style="background:rgba(0,96,169,0.15);color:#4A9FD4">Match Report</div>
+        </div>
+        <div class="mini-nav">
+          <div class="mini-nav-item"><div class="mini-dot" style="background:#0060A9"></div><div class="mini-nav-label" style="color:#4A9FD4">News</div></div>
+          <div class="mini-nav-item"><div class="mini-dot mini-dot-inactive"></div><div class="mini-nav-label" style="color:#5A5A5A">Tables</div></div>
+          <div class="mini-nav-item"><div class="mini-dot mini-dot-inactive"></div><div class="mini-nav-label" style="color:#5A5A5A">Videos</div></div>
+        </div>
+      </div>
+      <div class="team-name">#0060A9</div>
+    </div>
+    <!-- Gloucester -->
+    <div class="team-demo">
+      <div class="mini-ui">
+        <div class="mini-bar" style="background:#0F0F0F">
+          <div class="mini-logo" style="background:#CC2027"></div>
+          <div class="mini-title">Gloucester</div>
+        </div>
+        <div class="mini-content">
+          <div class="mini-badge" style="background:rgba(204,32,39,0.15);color:#E05A60">Match Report</div>
+        </div>
+        <div class="mini-nav">
+          <div class="mini-nav-item"><div class="mini-dot" style="background:#CC2027"></div><div class="mini-nav-label" style="color:#E05A60">News</div></div>
+          <div class="mini-nav-item"><div class="mini-dot mini-dot-inactive"></div><div class="mini-nav-label" style="color:#5A5A5A">Tables</div></div>
+          <div class="mini-nav-item"><div class="mini-dot mini-dot-inactive"></div><div class="mini-nav-label" style="color:#5A5A5A">Videos</div></div>
+        </div>
+      </div>
+      <div class="team-name">#CC2027</div>
+    </div>
+    <!-- Northampton -->
+    <div class="team-demo">
+      <div class="mini-ui">
+        <div class="mini-bar" style="background:#0F0F0F">
+          <div class="mini-logo" style="background:#3D1152"></div>
+          <div class="mini-title">Northampton</div>
+        </div>
+        <div class="mini-content">
+          <div class="mini-badge" style="background:rgba(61,17,82,0.25);color:#A060C0">Match Report</div>
+        </div>
+        <div class="mini-nav">
+          <div class="mini-nav-item"><div class="mini-dot" style="background:#8040A0"></div><div class="mini-nav-label" style="color:#A060C0">News</div></div>
+          <div class="mini-nav-item"><div class="mini-dot mini-dot-inactive"></div><div class="mini-nav-label" style="color:#5A5A5A">Tables</div></div>
+          <div class="mini-nav-item"><div class="mini-dot mini-dot-inactive"></div><div class="mini-nav-label" style="color:#5A5A5A">Videos</div></div>
+        </div>
+      </div>
+      <div class="team-name">#3D1152</div>
+    </div>
+  </div>
+</div>
+
+<div style="font-size:10px;color:#5A5A5A;font-family:'DM Mono',monospace;line-height:1.6">
+  accent used in: active nav indicator · primary CTA · badge tint · focus ring<br>
+  accent NOT used in: backgrounds · text body · borders · shadows
+</div>
+</body></html>

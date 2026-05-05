@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #111111; font-family: 'DM Sans', sans-serif; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+.row { display: flex; align-items: center; gap: 14px; }
+.bar-outer { height: 6px; background: #2A2A2A; border-radius: 3px; flex: 1; max-width: 200px; overflow: hidden; }
+.bar-inner { height: 100%; border-radius: 3px; background: #1B3A6B; }
+.meta { font-family: 'DM Mono', monospace; font-size: 10px; color: #555; }
+.label { font-size: 12px; font-weight: 600; color: #888; width: 80px; }
+</style></head><body>
+<div class="row">
+  <div class="label">instant</div>
+  <div class="bar-outer"><div class="bar-inner" style="width:0%"></div></div>
+  <div class="meta">0ms</div>
+</div>
+<div class="row">
+  <div class="label">fast</div>
+  <div class="bar-outer"><div class="bar-inner" style="width:25%"></div></div>
+  <div class="meta">150ms · easeInOut</div>
+</div>
+<div class="row">
+  <div class="label">medium</div>
+  <div class="bar-outer"><div class="bar-inner" style="width:47%"></div></div>
+  <div class="meta">300ms · easeInOut</div>
+</div>
+<div class="row">
+  <div class="label">slow</div>
+  <div class="bar-outer"><div class="bar-inner" style="width:78%"></div></div>
+  <div class="meta">500ms · easeInOut</div>
+</div>
+<div class="row">
+  <div class="label">entrance</div>
+  <div class="bar-outer"><div class="bar-inner" style="width:100%"></div></div>
+  <div class="meta">600ms · easeInOut</div>
+</div>
+<div style="margin-top:4px; font-size:10px; color:#444; font-family:'DM Mono',monospace">
+  press-down: 100ms easeOut → scale(0.97)<br>
+  press-up: 180ms easeOut → scale(1.0)<br>
+  tab fade: 240ms easeOut · LIVE dot: 900ms repeat
+</div>
+</body></html>

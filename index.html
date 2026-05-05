@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>My Rugby App — Design System Handoff</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #080808; color: #F2F2F2; font-family: 'DM Sans', sans-serif; padding: 56px 64px; max-width: 1100px; margin: 0 auto; }
+.eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; color: #C8A44A; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 8px; }
+h1 { font-family: 'Bebas Neue', sans-serif; font-size: 56px; letter-spacing: 1.5px; line-height: 1.0; margin-bottom: 16px; }
+.lead { font-size: 16px; color: #A0A0A0; line-height: 1.6; max-width: 760px; margin-bottom: 48px; }
+.docs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 56px; }
+.doc { background: #111; border: 1px solid #1E1E1E; border-radius: 12px; padding: 20px 22px; text-decoration: none; color: inherit; transition: all 160ms; display: block; }
+.doc:hover { border-color: #C8A44A; transform: translateY(-1px); }
+.doc .label { font-family: 'DM Mono', monospace; font-size: 10px; color: #C8A44A; letter-spacing: 0.6px; text-transform: uppercase; margin-bottom: 6px; }
+.doc h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.doc p { font-size: 13px; color: #888; line-height: 1.55; }
+h2 { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.8px; color: #C8A44A; margin: 0 0 16px; padding-top: 32px; border-top: 1px solid #1E1E1E; }
+h2:first-of-type { padding-top: 0; border-top: none; }
+.section-sub { font-size: 13px; color: #888; margin-bottom: 20px; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 32px; }
+.card { background: #111; border: 1px solid #1E1E1E; border-radius: 8px; padding: 14px 16px; text-decoration: none; color: inherit; transition: all 140ms; }
+.card:hover { border-color: #4A90D9; background: #161616; }
+.card .num { font-family: 'DM Mono', monospace; font-size: 9px; color: #4A4A4A; letter-spacing: 0.5px; }
+.card .name { font-size: 13px; font-weight: 600; color: #F0F0F0; margin-top: 2px; }
+.card .desc { font-size: 11px; color: #777; margin-top: 4px; line-height: 1.5; }
+footer { margin-top: 64px; padding-top: 24px; border-top: 1px solid #1E1E1E; font-family: 'DM Mono', monospace; font-size: 11px; color: #5A5A5A; }
+</style>
+</head>
+<body>
+
+<div class="eyebrow">Developer Handoff</div>
+<h1>MY RUGBY APP — DESIGN SYSTEM</h1>
+<p class="lead">Complete design reference for <code style="font-family:'DM Mono',monospace;color:#C8A44A;">wrumble/my-rugby-app</code>. CSS tokens mirror Dart sources in <code style="font-family:'DM Mono',monospace;color:#C8A44A;">lib/core/design/tokens/</code>; preview cards document every shared widget, color palette, and Match Hub component.</p>
+
+<div class="docs">
+  <a class="doc" href="README.md"><div class="label">Start here</div><h3>README.md</h3><p>Handoff overview, fidelity, file map, conventions to enforce.</p></a>
+  <a class="doc" href="IMPLEMENTATION_TASKS.md"><div class="label">First PRs</div><h3>IMPLEMENTATION_TASKS.md</h3><p>Six concrete tasks ranked for a clean PR sequence — start here when you're ready to write code.</p></a>
+  <a class="doc" href="DESIGN_SYSTEM.md"><div class="label">Reference</div><h3>DESIGN_SYSTEM.md</h3><p>Full design system documentation — every widget, token, pattern.</p></a>
+  <a class="doc" href="GIT_SETUP.md"><div class="label">Hosting</div><h3>GIT_SETUP.md</h3><p>How to commit this design system to GitHub. Recommended: monorepo under <code>design/</code>.</p></a>
+  <a class="doc" href="colors_and_type.css" style="grid-column: 1 / -1;"><div class="label">Source of truth</div><h3>colors_and_type.css</h3><p>Canonical CSS tokens — colors (brand, semantic, Match Hub dark + light), typography, spacing, radius, animation. Keep in sync with Dart tokens.</p></a>
+</div>
+
+<h2>Colors</h2>
+<div class="section-sub">Brand, semantic, and surface palettes. Match Hub has its own dark + light extension.</div>
+<div class="grid">
+  <a class="card" href="previews/colors-brand.html"><div class="num">01</div><div class="name">Brand palette</div><div class="desc">Red, navy, gold — primary identity</div></a>
+  <a class="card" href="previews/colors-semantic.html"><div class="num">02</div><div class="name">Semantic colors</div><div class="desc">Success, warning, error, info + surface tints</div></a>
+  <a class="card" href="previews/colors-dark-palette.html"><div class="num">03</div><div class="name">Dark mode palette</div><div class="desc">App-wide dark surface scale</div></a>
+  <a class="card" href="previews/colors-light-mode.html"><div class="num">04</div><div class="name">Light mode palette</div><div class="desc">App-wide light surface scale</div></a>
+  <a class="card" href="previews/colors-match-hub.html"><div class="num">05</div><div class="name">Match Hub — dark</div><div class="desc">Stadium-mode background + active states</div></a>
+  <a class="card" href="previews/colors-match-hub-light.html"><div class="num">06</div><div class="name">Match Hub — light</div><div class="desc">Daytime variant of stadium theme</div></a>
+  <a class="card" href="previews/colors-team-accent.html"><div class="num">07</div><div class="name">Team accent system</div><div class="desc">Per-team theming for cards & headers</div></a>
+</div>
+
+<h2>Typography</h2>
+<div class="grid">
+  <a class="card" href="previews/type-display.html"><div class="num">08</div><div class="name">Display — Bebas Neue</div><div class="desc">28-72pt headlines, +0.5-1.5px tracking</div></a>
+  <a class="card" href="previews/type-body.html"><div class="num">09</div><div class="name">Body — DM Sans</div><div class="desc">400/500/600/700/800 weights</div></a>
+  <a class="card" href="previews/type-mono.html"><div class="num">10</div><div class="name">Mono — DM Mono</div><div class="desc">Stats, scores, time codes</div></a>
+</div>
+
+<h2>Spacing &amp; Motion</h2>
+<div class="grid">
+  <a class="card" href="previews/spacing-tokens.html"><div class="num">11</div><div class="name">Spacing scale</div><div class="desc">4 / 8 / 12 / 16 / 20 / 24 / 32 / 40 / 48 / 64</div></a>
+  <a class="card" href="previews/spacing-radius.html"><div class="num">12</div><div class="name">Radius scale</div><div class="desc">4 / 8 / 12 / 16 / 24 / 32 / 999</div></a>
+  <a class="card" href="previews/spacing-animation.html"><div class="num">13</div><div class="name">Animation tokens</div><div class="desc">Durations + easing curves</div></a>
+</div>
+
+<h2>Components</h2>
+<div class="section-sub">Map directly to widgets in <code style="font-family:'DM Mono',monospace;color:#C8A44A;">lib/shared/widgets/</code> and feature widget folders.</div>
+<div class="grid">
+  <a class="card" href="previews/components-icon-set.html"><div class="num">14</div><div class="name">Icon set</div><div class="desc">Unified line-icon system — replaces every emoji</div></a>
+  <a class="card" href="previews/components-buttons.html"><div class="num">15</div><div class="name">Buttons</div><div class="desc">Filled / tonal / outlined / text</div></a>
+  <a class="card" href="previews/components-cards.html"><div class="num">16</div><div class="name">Cards</div><div class="desc">AppCard surface + elevation variants</div></a>
+  <a class="card" href="previews/components-badges.html"><div class="num">17</div><div class="name">Badges</div><div class="desc">AppBadge — status, count, label</div></a>
+  <a class="card" href="previews/components-app-section.html"><div class="num">18</div><div class="name">App Section</div><div class="desc">Section header + content wrapper</div></a>
+  <a class="card" href="previews/components-navigation.html"><div class="num">19</div><div class="name">Navigation</div><div class="desc">Bottom bar + header patterns</div></a>
+  <a class="card" href="previews/components-form-patterns.html"><div class="num">20</div><div class="name">Form patterns</div><div class="desc">Input, label, helper, error states</div></a>
+  <a class="card" href="previews/components-empty-states.html"><div class="num">21</div><div class="name">Empty states</div><div class="desc">No data, no results, first-run</div></a>
+  <a class="card" href="previews/components-error-loading.html"><div class="num">22</div><div class="name">Error &amp; loading</div><div class="desc">ErrorView, LoadingIndicator, OfflineBanner</div></a>
+  <a class="card" href="previews/components-impression-tracker.html"><div class="num">23</div><div class="name">Impression tracker</div><div class="desc">Analytics-aware viewport detection</div></a>
+  <a class="card" href="previews/components-hero-carousel.html"><div class="num">24</div><div class="name">Hero carousel</div><div class="desc">Featured-content slider</div></a>
+  <a class="card" href="previews/components-dual-progress-bar.html"><div class="num">25</div><div class="name">Dual progress bar</div><div class="desc">Possession / territory split</div></a>
+  <a class="card" href="previews/components-standings-table.html"><div class="num">26</div><div class="name">Standings table</div><div class="desc">Pool standings data table</div></a>
+  <a class="card" href="previews/components-light-mode.html"><div class="num">27</div><div class="name">Light mode components</div><div class="desc">All components in light theme</div></a>
+</div>
+
+<h2>Match Hub</h2>
+<div class="section-sub">The flagship feature — its own theme extension and component family.</div>
+<div class="grid">
+  <a class="card" href="previews/components-match-hub.html"><div class="num">28</div><div class="name">Match Hub overview</div><div class="desc">Tab bar, scoreboard, event feed</div></a>
+  <a class="card" href="previews/components-match-hub-tab-bar.html"><div class="num">29</div><div class="name">Match Hub tab bar</div><div class="desc">6-tab orb with flagship Fan Zone</div></a>
+  <a class="card" href="previews/components-fan-zone.html"><div class="num">30</div><div class="name">Fan Zone widgets</div><div class="desc">Reactions, polls, live chants</div></a>
+  <a class="card" href="previews/components-live-tab.html"><div class="num">31</div><div class="name">Live tab widgets</div><div class="desc">Event cards, score crawl, possession</div></a>
+</div>
+
+<h2>Brand &amp; system</h2>
+<div class="grid">
+  <a class="card" href="previews/brand-team-themes.html"><div class="num">32</div><div class="name">Team themes</div><div class="desc">Premiership club color overrides</div></a>
+  <a class="card" href="previews/brand-email-template.html"><div class="num">33</div><div class="name">Email template</div><div class="desc">Transactional email layout</div></a>
+  <a class="card" href="previews/brand-push-notifications.html"><div class="num">34</div><div class="name">Push notifications</div><div class="desc">iOS &amp; Android push styling</div></a>
+  <a class="card" href="previews/accessibility-audit.html"><div class="num">35</div><div class="name">Accessibility audit</div><div class="desc">Contrast, hit targets, motion</div></a>
+</div>
+
+<footer>
+  35 preview cards · 6 implementation tasks · CSS ↔ Dart token mirror<br>
+  Prepared for Claude Code · See <a href="README.md" style="color:#C8A44A;">README.md</a> to start
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #111111; font-family: 'DM Sans', sans-serif; padding: 20px; display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-start; }
+.swatch { display: flex; flex-direction: column; gap: 6px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 10px; border-radius: 4px;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+  line-height: 1.2;
+}
+.dot { width: 7px; height: 7px; border-radius: 50%; background: white; opacity: 0.9; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.25} }
+.dot-anim { animation: pulse 900ms ease-in-out infinite; }
+.hex { font-size: 10px; color: #555; font-family: 'DM Mono', monospace; margin-left: 2px; }
+.row { display: flex; align-items: center; gap: 8px; }
+</style></head><body>
+<div class="swatch">
+  <div class="row">
+    <div class="chip" style="background:#D32F2F;color:#fff"><span class="dot dot-anim"></span>LIVE</div>
+    <span class="hex">#D32F2F</span>
+  </div>
+  <div class="row">
+    <div class="chip" style="background:#2E7D32;color:#fff">SUCCESS</div>
+    <span class="hex">#2E7D32</span>
+  </div>
+  <div class="row">
+    <div class="chip" style="background:#F57F17;color:#000">WARNING</div>
+    <span class="hex">#F57F17</span>
+  </div>
+  <div class="row">
+    <div class="chip" style="background:rgba(200,164,74,0.15);color:#C8A44A">MATCH REPORT</div>
+    <span class="hex">Gold / 15%</span>
+  </div>
+  <div class="row">
+    <div class="chip" style="background:#E63946;color:#fff;border-radius:32px">LIVE</div>
+    <span class="hex">Match Hub pill</span>
+  </div>
+  <div class="row">
+    <div class="chip" style="background:#FFB74D;color:#fff;border-radius:32px">HT</div>
+    <span class="hex">Half Time pill</span>
+  </div>
+  <div class="row">
+    <div class="chip" style="background:#2A2A44;color:#fff;border-radius:32px">PRE</div>
+    <span class="hex">Pre-match pill</span>
+  </div>
+</div>
+</body></html>

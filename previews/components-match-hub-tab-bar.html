@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #080808; font-family: 'DM Sans', sans-serif; padding: 32px; color: #F0F0F0; }
+h1 { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1px; margin-bottom: 4px; }
+.sub { font-size: 11px; color: #888; font-family:'DM Mono',monospace; margin-bottom: 24px; letter-spacing: 0.4px; }
+.row { display:flex; gap: 32px; flex-wrap: wrap; }
+.col { flex: 0 0 380px; }
+.label { font-size: 10px; font-family: 'DM Mono', monospace; color: #555; margin-bottom: 10px; letter-spacing: 0.5px; text-transform: uppercase; }
+
+/* Phone shell */
+.phone {
+  width: 380px; height: 600px; background: #0D0D1A; border-radius: 32px;
+  border: 1px solid #1E1E1E; overflow: hidden; display:flex; flex-direction:column;
+  position: relative;
+}
+.fakebody {
+  flex: 1; display:flex; align-items:center; justify-content:center;
+  font-family:'DM Mono',monospace; font-size: 11px; color:#3A3A5C;
+  background: repeating-linear-gradient(45deg, #0D0D1A 0 12px, #11112A 12px 24px);
+}
+.appbar {
+  height: 56px; padding: 0 14px; display:flex; align-items:center; gap: 10px;
+  background: #0D0D1A; border-bottom: 1px solid #1E1E3A;
+}
+.crest { width: 28px; height: 28px; border-radius: 50%; background:#1A1A2E; display:flex;align-items:center;justify-content:center; }
+.crest svg { width: 16px; height: 16px; stroke:#F0F0F0; fill:none; stroke-width:1.6; }
+.appbar .score { flex:1; font-family:'DM Mono',monospace; font-size:13px; color:#F0F0F0; letter-spacing:0.5px; }
+.live-pill { background:#E63946; color:white; font-size:10px; font-weight:700; padding:3px 8px; border-radius: 4px; letter-spacing: 0.6px; }
+
+/* TabBar */
+.tabbar {
+  position: relative;
+  background: #0D0D1A;
+  box-shadow: 0 -3px 12px rgba(0,0,0,0.5);
+  height: 64px;
+}
+.tabbar-row { display: flex; align-items: stretch; height: 64px; }
+.tab {
+  flex: 1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap: 4px; cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.tab .icon { width: 22px; height: 22px; display:block; }
+.tab .icon svg { width: 100%; height: 100%; stroke:#7A8FA3; fill:none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.tab .lbl {
+  font-size: 10px; line-height: 1.1; color: #7A8FA3;
+  letter-spacing: 0.3px; font-weight: 500;
+}
+.tab.selected .lbl { color: #FF6B78; font-weight: 700; }
+.tab.selected .icon svg { stroke: #FF6B78; }
+.tab .underline {
+  height: 2px; width: 0; background: #FF6B78; border-radius: 999px;
+  transition: width 300ms cubic-bezier(.65,0,.35,1);
+}
+.tab.selected .underline { width: 24px; }
+
+/* Reserved centre slot */
+.center-slot { width: 88px; flex: 0 0 88px; }
+
+/* Flagship Fan Zone tab */
+.flagship {
+  position: absolute; top: -28px; left: 50%; transform: translateX(-50%);
+  width: 88px; height: 96px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  cursor: pointer;
+}
+.flagship .orb {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #1A1A2E 0%, #E63946 100%);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.45);
+  display:flex; align-items:center; justify-content:center;
+}
+.flagship .orb svg { width: 30px; height: 30px; stroke: #FFFFFF; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.flagship.selected .orb { box-shadow: 0 0 0 3px #E63946, 0 5px 10px rgba(0,0,0,0.45); }
+.flagship .lbl {
+  width: 72px; text-align: center; margin-top: 4px;
+  font-size: 9px; line-height: 1.1; letter-spacing: 1.2px; font-weight: 700;
+  color: #7A8FA3; text-transform: uppercase;
+}
+.flagship.selected .lbl { color: #FF6B78; }
+
+.notes { margin-top: 18px; font-size: 11px; color: #888; line-height: 1.6; }
+.notes code { font-family:'DM Mono',monospace; color: #C8A44A; font-size: 10px; }
+.notes b { color: #F0F0F0; font-weight: 700; }
+
+.divider { height: 1px; background: #1E1E1E; margin: 32px 0; }
+
+.spec { font-size: 10px; font-family:'DM Mono',monospace; color: #555; margin-top: 8px; line-height: 1.7; }
+.spec b { color: #888; font-weight: 400; display: inline-block; min-width: 110px; }
+.spec i { color: #FF6B78; font-style: normal; }
+</style></head><body>
+
+<h1>MATCH HUB · TAB BAR</h1>
+<div class="sub">match_hub_tab_bar.dart — flagship Fan Zone centre tab + mode-aware tab list</div>
+
+<!-- Reusable inline SVGs -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Live: rugby ball (rounded oval w/ laces) -->
+    <symbol id="i-live" viewBox="0 0 24 24">
+      <ellipse cx="12" cy="12" rx="9" ry="6" transform="rotate(-30 12 12)"/>
+      <path d="M9 13.5 L15 10.5 M10 11.5 L11.2 12.1 M11.5 10.7 L12.7 11.3 M13 9.9 L14.2 10.5"/>
+    </symbol>
+    <!-- Stadium -->
+    <symbol id="i-stadium" viewBox="0 0 24 24">
+      <ellipse cx="12" cy="9" rx="9" ry="3"/>
+      <path d="M3 9 v6 c0 1.7 4 3 9 3 s9 -1.3 9 -3 V9"/>
+      <path d="M8 11 v8 M16 11 v8 M12 12 v9"/>
+    </symbol>
+    <!-- Watch / TV -->
+    <symbol id="i-watch" viewBox="0 0 24 24">
+      <rect x="3" y="5" width="18" height="13" rx="2"/>
+      <path d="M8 21 h8 M12 18 v3"/>
+    </symbol>
+    <!-- Programme / book -->
+    <symbol id="i-programme" viewBox="0 0 24 24">
+      <path d="M4 4.5 C7 4 10 4 12 5.5 C14 4 17 4 20 4.5 V19 C17 18.5 14 18.5 12 20 C10 18.5 7 18.5 4 19 Z"/>
+      <path d="M12 5.5 V20"/>
+    </symbol>
+    <!-- Pre-match / pint glass -->
+    <symbol id="i-pre" viewBox="0 0 24 24">
+      <path d="M7 4 h10 l-1 16 a1 1 0 0 1 -1 1 H9 a1 1 0 0 1 -1 -1 Z"/>
+      <path d="M16.5 9 h2 a1.5 1.5 0 0 1 1.5 1.5 v3 a1.5 1.5 0 0 1 -1.5 1.5 h-2.3"/>
+      <path d="M9 8 h6"/>
+    </symbol>
+    <!-- Post-match / bus -->
+    <symbol id="i-post" viewBox="0 0 24 24">
+      <rect x="4" y="5" width="16" height="12" rx="2"/>
+      <path d="M4 12 h16 M8 5 v7 M16 5 v7"/>
+      <circle cx="8" cy="19" r="1.5"/>
+      <circle cx="16" cy="19" r="1.5"/>
+    </symbol>
+    <!-- Fan Zone / electric fan: 4 curved blades, hub, housing ring, base + stand -->
+    <symbol id="i-fanzone" viewBox="0 0 24 24"><circle cx="10" cy="9" r="6"/><g transform="rotate(0 10 9)"><path d="M10 9 C 14 7 15 9 14.5 11 C 13 11 11 10.5 10 9 Z"/></g><g transform="rotate(120 10 9)"><path d="M10 9 C 14 7 15 9 14.5 11 C 13 11 11 10.5 10 9 Z"/></g><g transform="rotate(240 10 9)"><path d="M10 9 C 14 7 15 9 14.5 11 C 13 11 11 10.5 10 9 Z"/></g><circle cx="10" cy="9" r="1.1" fill="currentColor" stroke="none"/><path d="M10 15 V17"/><path d="M5.5 21 H14.5 L13 17 H7 Z"/><path d="M8.5 19.5 H11.5"/><path d="M18 6 H21 M19 9 H22 M18 12 H21"/></symbol>
+    <!-- App-bar crest placeholder (shield) -->
+    <symbol id="i-shield" viewBox="0 0 24 24">
+      <path d="M12 3 L20 6 V12 C20 16 16.5 19.5 12 21 C7.5 19.5 4 16 4 12 V6 Z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="row">
+
+  <!-- GROUND mode -->
+  <div class="col">
+    <div class="label">Ground mode · Pre-Match · Fan Zone selected</div>
+    <div class="phone">
+      <div class="appbar">
+        <div class="crest"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3 L20 6 V12 C20 16 16.5 19.5 12 21 C7.5 19.5 4 16 4 12 V6 Z"/></svg></div>
+        <div class="score">SAR 0 — 0 BAT · 14:30</div>
+        <div class="live-pill">PRE</div>
+      </div>
+      <div class="fakebody">[ fan zone tab body slot ]</div>
+      <div class="tabbar">
+        <div class="tabbar-row">
+          <div class="tab"><span class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="12" rx="9" ry="6" transform="rotate(-30 12 12)"/>
+      <path d="M9 13.5 L15 10.5 M10 11.5 L11.2 12.1 M11.5 10.7 L12.7 11.3 M13 9.9 L14.2 10.5"/></svg></span><div class="lbl">Live</div><div class="underline"></div></div>
+          <div class="tab"><span class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="9" rx="9" ry="3"/>
+      <path d="M3 9 v6 c0 1.7 4 3 9 3 s9 -1.3 9 -3 V9"/>
+      <path d="M8 11 v8 M16 11 v8 M12 12 v9"/></svg></span><div class="lbl">Stadium</div><div class="underline"></div></div>
+          <div class="center-slot"></div>
+          <div class="tab"><span class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 4 h10 l-1 16 a1 1 0 0 1 -1 1 H9 a1 1 0 0 1 -1 -1 Z"/>
+      <path d="M16.5 9 h2 a1.5 1.5 0 0 1 1.5 1.5 v3 a1.5 1.5 0 0 1 -1.5 1.5 h-2.3"/>
+      <path d="M9 8 h6"/></svg></span><div class="lbl">Pre-Match</div><div class="underline"></div></div>
+          <div class="tab"><span class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4.5 C7 4 10 4 12 5.5 C14 4 17 4 20 4.5 V19 C17 18.5 14 18.5 12 20 C10 18.5 7 18.5 4 19 Z"/>
+      <path d="M12 5.5 V20"/></svg></span><div class="lbl">Programme</div><div class="underline"></div></div>
+        </div>
+        <div class="flagship selected">
+          <div class="orb"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="9" r="6"/><g transform="rotate(0 10 9)"><path d="M10 9 C 14 7 15 9 14.5 11 C 13 11 11 10.5 10 9 Z"/></g><g transform="rotate(120 10 9)"><path d="M10 9 C 14 7 15 9 14.5 11 C 13 11 11 10.5 10 9 Z"/></g><g transform="rotate(240 10 9)"><path d="M10 9 C 14 7 15 9 14.5 11 C 13 11 11 10.5 10 9 Z"/></g><circle cx="10" cy="9" r="1.1" fill="currentColor" stroke="none"/><path d="M10 15 V17"/><path d="M5.5 21 H14.5 L13 17 H7 Z"/><path d="M8.5 19.5 H11.5"/><path d="M18 6 H21 M19 9 H22 M18 12 H21"/></svg></div>
+          <div class="lbl">Fan Zone</div>
+        </div>
+      </div>
+    </div>
+    <div class="spec">
+      <b>tabs (5):</b> Live · Stadium · <i>Fan Zone★</i> · Pre-Match · Programme<br>
+      <b>fanZoneIndex:</b> 2 (centre)<br>
+      <b>swap:</b> Pre-Match → Post-Match when phase==fullTime
+    </div>
+  </div>
+
+  <!-- TV mode -->
+  <div class="col">
+    <div class="label">TV mode · Live selected</div>
+    <div class="phone">
+      <div class="appbar">
+        <div class="crest"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3 L20 6 V12 C20 16 16.5 19.5 12 21 C7.5 19.5 4 16 4 12 V6 Z"/></svg></div>
+        <div class="score">SAR 14 — 10 BAT · 38'</div>
+        <div class="live-pill">LIVE</div>
+      </div>
+      <div class="fakebody">[ live tab body slot ]</div>
+      <div class="tabbar">
+        <div class="tabbar-row">
+          <div class="tab selected"><span class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="12" rx="9" ry="6" transform="rotate(-30 12 12)"/>
+      <path d="M9 13.5 L15 10.5 M10 11.5 L11.2 12.1 M11.5 10.7 L12.7 11.3 M13 9.9 L14.2 10.5"/></svg></span><div class="lbl">Live</div><div class="underline"></div></div>
+          <div class="center-slot"></div>
+          <div class="tab"><span class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="13" rx="2"/>
+      <path d="M8 21 h8 M12 18 v3"/></svg></span><div class="lbl">Watch</div><div class="underline"></div></div>
+        </div>
+        <div class="flagship">
+          <div class="orb"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="9" r="6"/><g transform="rotate(0 10 9)"><path d="M10 9 C 14 7 15 9 14.5 11 C 13 11 11 10.5 10 9 Z"/></g><g transform="rotate(120 10 9)"><path d="M10 9 C 14 7 15 9 14.5 11 C 13 11 11 10.5 10 9 Z"/></g><g transform="rotate(240 10 9)"><path d="M10 9 C 14 7 15 9 14.5 11 C 13 11 11 10.5 10 9 Z"/></g><circle cx="10" cy="9" r="1.1" fill="currentColor" stroke="none"/><path d="M10 15 V17"/><path d="M5.5 21 H14.5 L13 17 H7 Z"/><path d="M8.5 19.5 H11.5"/><path d="M18 6 H21 M19 9 H22 M18 12 H21"/></svg></div>
+          <div class="lbl">Fan Zone</div>
+        </div>
+      </div>
+    </div>
+    <div class="spec">
+      <b>tabs (3):</b> <i>Live★</i> · Fan Zone · Watch<br>
+      <b>fanZoneIndex:</b> 1 (centre)<br>
+      <b>phase:</b> ignored — TV layout is constant
+    </div>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+
+<div class="row">
+  <div class="col" style="flex: 1 1 100%;">
+    <div class="label">Anatomy</div>
+    <div class="notes" style="max-width: 820px;">
+      <p>The Match Hub uses its own custom tab bar — <b>not</b> the bottom <code>NavigationBar</code> from the rest of the app. Layout is a <code>Stack</code> over <code>Material(elevation: 3)</code>:</p>
+      <ul style="margin: 10px 0 10px 18px; line-height: 1.7;">
+        <li>Side tabs render in two flex rows around a fixed <code>SizedBox(width: 88)</code> centre slot</li>
+        <li>The Fan Zone tab is positioned <code>top: -28</code> overflowing above the bar — a 64×64 radial-gradient orb (<code>#1A1A2E → AppColors.red500</code>) with <code>BoxShadow(0,5,10, 25%)</code></li>
+        <li>Selected side tab: red label + 24×2 underline pill (<code>AnimatedContainer 300ms easeInOutCubic</code>)</li>
+        <li>Selected flagship: 3pt red ring around the orb + red label</li>
+        <li>Bar height <b>64pt</b>; flagship total height <b>96pt</b>; respects bottom <code>SafeArea</code></li>
+      </ul>
+      <p><b>Iconography — unified set.</b> Match Hub icons follow the <b>app-wide line style</b>: 24px viewBox, <b>1.6pt stroke</b>, <code>strokeLinecap: round</code>, <code>strokeLinejoin: round</code>, no fills (only the fan hub is filled). Selected = stroke <code>#FF6B78</code>; default = stroke <code>#7A8FA3</code>. Use Material Symbols Outlined as the source where possible: <code>sports_rugby</code> (Live) · <code>stadium</code> (Stadium) · <code>tv</code> (Watch) · <code>menu_book</code> (Programme) · <code>local_bar</code> (Pre-Match) · <code>directions_bus</code> (Post-Match). The flagship Fan Zone uses a <b>custom electric-fan glyph</b> (4 curved blades + filled hub + housing ring + stand) — not <code>wind_power</code>, which reads as a turbine. <b>Apply this style to every icon in the app</b>: replace any filled/duotone Material Icons with their <code>_outlined</code> variants, drop legacy emoji on <code>MatchHubTab.icon</code> and <code>NavigationDestination</code>, and align tab-bar / app-bar / list icons to 22pt with the same 1.6pt outlined stroke.</p>
+      <p><b>Tab list selection</b> is driven by <code>tabsForMode(mode, phase:)</code>: Ground mode returns 5 tabs (with Pre-Match/Post-Match swap on <code>MatchPhase.fullTime</code>); TV mode returns 3 tabs unconditionally. The centre Fan Zone is hard-wired via <code>fanZoneIndexFor(mode)</code> — index 2 for Ground, index 1 for TV — so each layout is symmetric around the flagship.</p>
+      <p><b>Mode entry.</b> First time a user opens a match, <code>ModeSelectionScreen</code> runs a 3-step flow: GPS auto-detect → confirm "you're at the stadium?" → fall-back manual select with two cards comparing what each mode shows. Selection persists per-matchId via <code>ModeBloc</code>; users can swap any time via the app-bar action which dispatches <code>ModeModeSelected</code>.</p>
+    </div>
+  </div>
+</div>
+
+</body></html>

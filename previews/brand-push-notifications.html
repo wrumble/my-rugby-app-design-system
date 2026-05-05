@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #111111; font-family: 'DM Sans', sans-serif; padding: 18px 20px; display: flex; flex-direction: column; gap: 16px; }
+.label { font-family: 'DM Mono', monospace; font-size: 9px; color: #5A5A5A; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 8px; }
+
+/* iOS notification */
+.ios-notif {
+  background: rgba(30,30,30,0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  max-width: 340px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.notif-icon { width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.notif-body { flex: 1; min-width: 0; }
+.notif-header { display: flex; align-items: center; gap: 6px; margin-bottom: 2px; }
+.notif-app { font-size: 11px; font-weight: 700; color: #8A8A8A; text-transform: uppercase; letter-spacing: 0.4px; }
+.notif-time { font-size: 11px; color: #5A5A5A; margin-left: auto; }
+.notif-title { font-size: 13px; font-weight: 700; color: #F2F2F2; line-height: 1.3; }
+.notif-sub { font-size: 12px; color: #8A8A8A; margin-top: 2px; line-height: 1.35; }
+
+/* Android notification */
+.android-notif {
+  background: #1E1E1E;
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  max-width: 340px;
+}
+.android-notif .notif-title { font-size: 13px; font-weight: 600; color: #F2F2F2; }
+.android-notif .notif-sub { font-size: 12px; color: #8A8A8A; margin-top: 1px; line-height: 1.35; }
+.android-dot { width: 8px; height: 8px; border-radius: 4px; margin-top: 4px; flex-shrink: 0; }
+
+@keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.3} }
+.live-dot { animation: pulse 900ms ease-in-out infinite; }
+</style></head><body>
+
+<div>
+  <div class="label">iOS — Match kick-off alert</div>
+  <div class="ios-notif">
+    <div class="notif-icon" style="background:#4A90D9">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="12" rx="5" ry="9" transform="rotate(-30 12 12)" stroke="white" stroke-width="1.5"/><line x1="3" y1="12" x2="21" y2="12" stroke="white" stroke-width="1.5"/></svg>
+    </div>
+    <div class="notif-body">
+      <div class="notif-header">
+        <span class="notif-app">Bath Rugby</span>
+        <span class="notif-time">now</span>
+      </div>
+      <div class="notif-title">Kick-off in 30 minutes</div>
+      <div class="notif-sub">Bath vs Saracens · The Rec · 15:00</div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="label">iOS — Live score update (LIVE)</div>
+  <div class="ios-notif">
+    <div class="notif-icon" style="background:#D32F2F">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><circle cx="12" cy="12" r="8" class="live-dot"/></svg>
+    </div>
+    <div class="notif-body">
+      <div class="notif-header">
+        <span class="notif-app">Bath Rugby</span>
+        <span style="font-size:9px;font-weight:800;color:#D32F2F;letter-spacing:0.5px;text-transform:uppercase">● LIVE</span>
+        <span class="notif-time">72'</span>
+      </div>
+      <div class="notif-title">TRY! Orlando Bailey — Bath 24–17</div>
+      <div class="notif-sub">Bath vs Saracens · 72nd minute</div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="label">iOS — New article published</div>
+  <div class="ios-notif">
+    <div class="notif-icon" style="background:#0F0F0F;border:1px solid #2A2A2A">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4A90D9" stroke-width="1.5" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>
+    </div>
+    <div class="notif-body">
+      <div class="notif-header">
+        <span class="notif-app">Bath Rugby</span>
+        <span class="notif-time">2m ago</span>
+      </div>
+      <div class="notif-title">Match Report: Bath 24–17 Saracens</div>
+      <div class="notif-sub">Full match report now available</div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="label">Android — Score update</div>
+  <div class="android-notif">
+    <div class="android-dot live-dot" style="background:#D32F2F"></div>
+    <div class="notif-body">
+      <div class="notif-title">Bath 24–17 Saracens · LIVE 72'</div>
+      <div class="notif-sub">TRY! Orlando Bailey converts to extend Bath's lead</div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="label">Android — Full time result</div>
+  <div class="android-notif">
+    <div class="android-dot" style="background:#2E7D32"></div>
+    <div class="notif-body">
+      <div class="notif-title">Full Time: Bath 27–17 Saracens ✓ WIN</div>
+      <div class="notif-sub">Bath claim bonus point win at The Rec · Tap for report</div>
+    </div>
+  </div>
+</div>
+
+</body></html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #F5F5F5; font-family: 'DM Sans', sans-serif; padding: 18px 20px; display: flex; flex-direction: column; gap: 14px; }
+.label { font-family: 'DM Mono', monospace; font-size: 9px; color: #999; text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 8px; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; padding: 10px 20px; font-size: 12px; font-weight: 600; font-family: 'DM Sans', sans-serif; border: none; cursor: pointer; }
+.btn-filled   { background: #004A8F; color: #fff; }
+.btn-outlined { background: rgba(0,74,143,0.08); color: #004A8F; border: 1.5px solid rgba(0,74,143,0.35); }
+.btn-neutral  { background: #EEEEEE; color: #111111; border: 1px solid #DDDDDD; }
+.btn-sm { padding: 7px 14px; font-size: 11px; }
+
+.card { background: #FFFFFF; border-radius: 12px; border: 1px solid #E8E8E8; padding: 14px; }
+.card-title { font-size: 13px; font-weight: 700; color: #111111; line-height: 1.4; margin-top: 6px; }
+.card-meta  { font-size: 11px; color: #888; margin-top: 4px; }
+
+.badge { display: inline-flex; align-items: center; gap: 3px; padding: 3px 7px; border-radius: 4px; font-size: 9px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }
+
+.nav { background: #FFFFFF; border-top: 1px solid #E8E8E8; display: flex; width: 100%; padding: 6px 0 8px; }
+.nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.nav-dot { width: 4px; height: 4px; border-radius: 2px; }
+.nav-lbl { font-size: 10px; font-weight: 600; }
+</style></head><body>
+
+<div>
+  <div class="label">Buttons — light mode</div>
+  <div class="row">
+    <button class="btn btn-filled">Select Team</button>
+    <button class="btn btn-outlined">Learn More</button>
+    <button class="btn btn-neutral">Cancel</button>
+    <button class="btn btn-neutral btn-sm">Share</button>
+  </div>
+</div>
+
+<div>
+  <div class="label">Card — light mode (white surface, subtle border)</div>
+  <div class="card" style="max-width:220px">
+    <div class="badge" style="background:rgba(0,74,143,0.10);color:#004A8F">Match Report</div>
+    <div class="card-title">Bath secure thrilling late win at The Rec</div>
+    <div class="card-meta">2 hours ago</div>
+  </div>
+</div>
+
+<div>
+  <div class="label">Badges — light mode</div>
+  <div class="row">
+    <div class="badge" style="background:#FFEBEE;color:#C62828">● LIVE</div>
+    <div class="badge" style="background:#E8F5E9;color:#2E7D32">✓ WIN</div>
+    <div class="badge" style="background:#FFF3E0;color:#E65100">⚠ CAUTION</div>
+    <div class="badge" style="background:rgba(0,74,143,0.10);color:#004A8F">Match Report</div>
+  </div>
+</div>
+
+<div>
+  <div class="label">Navigation bar — light mode</div>
+  <div class="nav">
+    <div class="nav-item">
+      <div class="nav-dot" style="background:#004A8F"></div>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#004A8F" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>
+      <span class="nav-lbl" style="color:#004A8F">News</span>
+    </div>
+    <div class="nav-item">
+      <div class="nav-dot" style="background:transparent"></div>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#BBBBBB" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="4" rx="1"/><rect x="3" y="10" width="8" height="4" rx="1"/><rect x="3" y="17" width="8" height="4" rx="1"/><rect x="13" y="10" width="8" height="4" rx="1"/><rect x="13" y="17" width="8" height="4" rx="1"/></svg>
+      <span class="nav-lbl" style="color:#BBBBBB">Tables</span>
+    </div>
+    <div class="nav-item">
+      <div class="nav-dot" style="background:transparent"></div>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#BBBBBB" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><polygon points="10,8 16,12 10,16" fill="#BBBBBB" stroke="none"/></svg>
+      <span class="nav-lbl" style="color:#BBBBBB">Videos</span>
+    </div>
+    <div class="nav-item">
+      <div class="nav-dot" style="background:transparent"></div>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#BBBBBB" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="3.5"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      <span class="nav-lbl" style="color:#BBBBBB">Profile</span>
+    </div>
+  </div>
+</div>
+
+</body></html>

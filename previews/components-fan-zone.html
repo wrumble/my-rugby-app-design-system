@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0D0D1A; font-family: 'DM Sans', sans-serif; padding: 24px; color: #E0E0F0; }
+.label { font-size: 10px; font-family: 'DM Mono', monospace; color: #556677; margin-bottom: 10px; letter-spacing: 0.5px; text-transform: uppercase; }
+.row { display: flex; gap: 24px; flex-wrap: wrap; align-items: flex-start; }
+.frame { width: 360px; background: #0D0D1A; border: 1px solid #3A3A5C; border-radius: 16px; padding: 16px; }
+.section-h { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.8px; color: #E0E0F0; text-transform: uppercase; margin-bottom: 12px; }
+.app-card { background: #1A1A2E; border-radius: 16px; padding: 16px; }
+/* POTM */
+.nominee { margin-bottom: 16px; }
+.nominee-head { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.nominee-name { flex: 1; }
+.nominee-name .n { font-size: 14px; font-weight: 600; color: #E0E0F0; }
+.nominee-name .p { font-size: 12px; color: #8888AA; }
+.vote-btn { color: #E63946; font-weight: 600; font-size: 13px; }
+.pct { font-family: 'DM Mono', monospace; font-size: 12px; color: #E0E0F0; min-width: 40px; text-align: right; }
+.bar { height: 6px; border-radius: 32px; background: #1A1A2E; overflow: hidden; position: relative; }
+.bar-fill { height: 100%; background: #E63946; border-radius: 32px; }
+.chip { display: inline-block; padding: 2px 8px; border-radius: 32px; font-size: 11px; color: #8888AA; background: rgba(136,136,170,0.12); }
+/* Reactions */
+.reaction-row { display: flex; justify-content: space-around; padding: 8px 0; }
+.reaction { text-align: center; }
+.reaction .emoji { font-size: 28px; }
+.reaction .count { font-family: 'DM Mono', monospace; font-size: 12px; color: #8888AA; }
+.dominant { text-align: center; font-size: 13px; color: #8888AA; margin-top: 12px; }
+/* Score prediction */
+.pred-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+.pred-btn { padding: 14px 8px; border-radius: 16px; background: #1A1A2E; border: 1px solid #3A3A5C; text-align: center; }
+.pred-btn.sel { border-color: #E63946; background: rgba(230,57,70,0.12); }
+.pred-btn .who { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.5px; color: #E0E0F0; text-transform: uppercase; }
+.pred-btn .pct { font-family: 'DM Mono', monospace; font-size: 11px; color: #8888AA; margin-top: 4px; min-width: 0; text-align: center; }
+.pred-btn.sel .pct { color: #E63946; }
+/* Other scores */
+.match-row { display: flex; align-items: center; padding: 8px 0; border-bottom: 1px solid #2A2A44; }
+.match-row:last-child { border-bottom: 0; }
+.match-row .team-l { flex: 1; font-size: 13px; color: #E0E0F0; }
+.match-row .team-r { flex: 1; font-size: 13px; color: #E0E0F0; text-align: right; }
+.match-row .score { font-family: 'DM Mono', monospace; font-size: 14px; padding: 0 12px; color: #E0E0F0; }
+.match-row .live-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #E63946; margin-right: 6px; vertical-align: middle; }
+.note { margin-top: 16px; max-width: 1100px; font-size: 11px; color: #8888AA; line-height: 1.6; }
+.note code { font-family: 'DM Mono', monospace; color: #FF6B78; font-size: 10px; }
+</style></head><body>
+
+<div class="label">Fan Zone widgets — Match Hub navy palette</div>
+<div class="row">
+
+  <!-- POTM -->
+  <div class="frame">
+    <div style="font-size:10px;color:#556677;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">PotmVoteCard</div>
+    <div class="app-card">
+      <div style="display:flex;align-items:center;margin-bottom:12px;">
+        <div class="section-h" style="flex:1;margin-bottom:0;">Player of the Match</div>
+        <div class="chip">Voting closed</div>
+      </div>
+      <div class="nominee">
+        <div class="nominee-head">
+          <div class="nominee-name"><div class="n">Finn Russell</div><div class="p">Fly Half</div></div>
+          <div style="color:#2E7D32;font-size:18px;">✓</div>
+          <div class="pct">42%</div>
+        </div>
+        <div class="bar"><div class="bar-fill" style="width:42%;"></div></div>
+      </div>
+      <div class="nominee">
+        <div class="nominee-head">
+          <div class="nominee-name"><div class="n">Ben Spencer</div><div class="p">Scrum Half</div></div>
+          <div class="pct">31%</div>
+        </div>
+        <div class="bar"><div class="bar-fill" style="width:31%;"></div></div>
+      </div>
+      <div class="nominee">
+        <div class="nominee-head">
+          <div class="nominee-name"><div class="n">Beno Obano</div><div class="p">Loosehead Prop</div></div>
+          <div class="pct">27%</div>
+        </div>
+        <div class="bar"><div class="bar-fill" style="width:27%;"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reactions -->
+  <div class="frame">
+    <div style="font-size:10px;color:#556677;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">ReactionBar</div>
+    <div class="app-card">
+      <div class="section-h">How are you feeling?</div>
+      <div class="reaction-row">
+        <div class="reaction"><div class="emoji">🔥</div><div class="count">2.4k</div></div>
+        <div class="reaction"><div class="emoji">💪</div><div class="count">1.1k</div></div>
+        <div class="reaction"><div class="emoji">😱</div><div class="count">582</div></div>
+        <div class="reaction"><div class="emoji">😢</div><div class="count">93</div></div>
+        <div class="reaction"><div class="emoji">😡</div><div class="count">204</div></div>
+      </div>
+      <div class="dominant">Most fans are feeling fired up</div>
+    </div>
+  </div>
+
+  <!-- Score prediction -->
+  <div class="frame">
+    <div style="font-size:10px;color:#556677;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">ScorePredictionCard / PredictionVoteWidget</div>
+    <div class="app-card">
+      <div class="section-h">Who will win?</div>
+      <div class="pred-grid">
+        <div class="pred-btn"><div class="who">Home</div><div class="pct">58%</div></div>
+        <div class="pred-btn"><div class="who">Draw</div><div class="pct">7%</div></div>
+        <div class="pred-btn sel"><div class="who">Away</div><div class="pct">35% · You</div></div>
+      </div>
+      <div style="font-size:12px;color:#8888AA;text-align:center;">Community says <span style="color:#E0E0F0;font-weight:600;">Home</span></div>
+    </div>
+  </div>
+
+  <!-- Other scores -->
+  <div class="frame">
+    <div style="font-size:10px;color:#556677;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">OtherScoresPanel</div>
+    <div class="app-card">
+      <div class="section-h">Around the Premiership</div>
+      <div class="match-row">
+        <div class="team-l">Bristol Bears</div>
+        <div class="score">17 – 12</div>
+        <div class="team-r">Sale Sharks</div>
+      </div>
+      <div class="match-row">
+        <div class="team-l">Harlequins</div>
+        <div class="score"><span class="live-dot"></span>21 – 14</div>
+        <div class="team-r">Exeter</div>
+      </div>
+      <div class="match-row">
+        <div class="team-l">Leicester</div>
+        <div class="score">28 – 22</div>
+        <div class="team-r">Gloucester</div>
+      </div>
+      <div class="match-row">
+        <div class="team-l">Northampton</div>
+        <div class="score" style="color:#8888AA;font-size:12px;">15:00</div>
+        <div class="team-r">Newcastle</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="note">
+  Fan Zone widgets all wrap in <code>AppCard</code> on the Match Hub navy <code>surface</code> (<code>#1A1A2E</code>). Section titles use the local <code>SectionHeader</code> primitive (Bebas Neue display-sm, 24pt). Vote/predict buttons fire <code>MatchHubAnalyticsService.logPotmVoted()</code> / <code>logPredictionMade()</code> respectively — never bypass it. Progress bars use <code>AppColors.red500</code> (<code>#E63946</code>, brightened to <code>#FF6B78</code> in high-contrast mode) — semantic accent for Match Hub. Reactions use 5 emoji (<code>🔥💪😱😢😡</code>) — note: this is the only place emoji are used in the app outside of match-event icons. <code>OtherScoresPanel</code> live dot is the same red pulsing 900ms cycle as the LIVE badge.
+</div>
+
+</body></html>

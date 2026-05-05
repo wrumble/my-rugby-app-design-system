@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #080808; font-family: 'DM Sans', sans-serif; padding: 20px; display: flex; flex-direction: column; gap: 18px; }
+.label { font-size: 9px; color: #5A5A5A; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 8px; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 8px; padding: 11px 22px;
+  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
+  border: none; cursor: pointer; letter-spacing: 0.2px;
+  transition: transform 100ms ease-out, opacity 100ms;
+  white-space: nowrap;
+}
+.btn:active { transform: scale(0.97); }
+
+/* Filled — team accent bg */
+.btn-filled { background: #4A90D9; color: #fff; }
+
+/* Outlined — visible border + matching text, solid bg for contrast */
+.btn-outlined {
+  background: rgba(74,144,217,0.10);
+  color: #4A90D9;         /* 5.7:1 on #080808 — AA */
+  border: 1.5px solid rgba(74,144,217,0.55);
+}
+
+/* Neutral — no accent, always safe */
+.btn-neutral { background: #161616; color: #F2F2F2; border: 1px solid #252525; }
+
+/* Destructive */
+.btn-danger { background: rgba(211,47,47,0.12); color: #FF6B6B; border: 1.5px solid rgba(211,47,47,0.4); }
+
+.btn-sm { padding: 7px 14px; font-size: 11px; }
+</style></head><body>
+
+<div>
+  <div class="label">Filled — primary CTA, uses team accent</div>
+  <div class="row">
+    <button class="btn btn-filled">Select Team</button>
+    <button class="btn btn-filled btn-sm">Watch Now</button>
+  </div>
+</div>
+
+<div>
+  <div class="label">Outlined — secondary action, tinted bg for legibility</div>
+  <div class="row">
+    <button class="btn btn-outlined">Learn More</button>
+    <button class="btn btn-outlined btn-sm">Filter</button>
+  </div>
+</div>
+
+<div>
+  <div class="label">Neutral — no team colour dependency</div>
+  <div class="row">
+    <button class="btn btn-neutral">Cancel</button>
+    <button class="btn btn-neutral btn-sm">Share</button>
+  </div>
+</div>
+
+<div>
+  <div class="label">Destructive</div>
+  <div class="row">
+    <button class="btn btn-danger">Sign Out</button>
+  </div>
+</div>
+
+</body></html>

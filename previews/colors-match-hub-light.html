@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #1A1A1A; font-family: 'DM Sans', sans-serif; padding: 24px; color: #F0F0F0; }
+.label { font-size: 10px; font-family: 'DM Mono', monospace; color: #888; margin-bottom: 10px; letter-spacing: 0.5px; text-transform: uppercase; }
+.row { display: flex; gap: 24px; flex-wrap: wrap; }
+.swatches { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 460px; }
+.sw { border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 12px 14px; display: flex; align-items: center; gap: 14px; }
+.chip { width: 36px; height: 36px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1); flex-shrink: 0; }
+.meta { font-size: 11px; line-height: 1.5; }
+.meta b { display: block; font-weight: 600; color: #F0F0F0; font-size: 13px; margin-bottom: 2px; }
+.meta code { font-family: 'DM Mono', monospace; color: #888; font-size: 10px; }
+.preview-card { width: 280px; background: #FFFFFF; border-radius: 12px; padding: 16px; color: #0D0D1A; }
+.preview-card .top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid #D0D0D6; margin-bottom: 12px; }
+.preview-card .home, .preview-card .away { font-weight: 700; font-size: 15px; }
+.preview-card .score { font-family: 'DM Mono'; font-weight: 700; font-size: 24px; }
+.preview-card .meta-row { font-size: 11px; color: #555566; display: flex; justify-content: space-between; }
+.preview-card .input { background: #E8E8EC; border-radius: 8px; padding: 8px 12px; font-size: 12px; color: #8A8A99; margin-top: 12px; }
+.notes { margin-top: 18px; max-width: 760px; font-size: 11px; color: #888; line-height: 1.6; }
+.notes code { font-family: 'DM Mono', monospace; color: #C8A44A; font-size: 10px; }
+</style></head><body>
+<div class="label">Match Hub — Light palette (new — was previously dark-only)</div>
+
+<div class="row">
+  <div class="swatches">
+    <div class="sw"><div class="chip" style="background:#F5F5F5"></div><div class="meta"><b>bg</b><code>#F5F5F5</code> · scaffold</div></div>
+    <div class="sw"><div class="chip" style="background:#FFFFFF"></div><div class="meta"><b>surface</b><code>#FFFFFF</code> · score banner</div></div>
+    <div class="sw"><div class="chip" style="background:#E8E8EC"></div><div class="meta"><b>surfaceElevated</b><code>#E8E8EC</code> · raised / inputs</div></div>
+    <div class="sw"><div class="chip" style="background:#D0D0D6"></div><div class="meta"><b>surfaceBorder</b><code>#D0D0D6</code> · divider</div></div>
+    <div class="sw"><div class="chip" style="background:#0D0D1A"></div><div class="meta"><b>textPrimary</b><code>#0D0D1A</code> · 16:1 on bg</div></div>
+    <div class="sw"><div class="chip" style="background:#555566"></div><div class="meta"><b>textSecondary</b><code>#555566</code> · 7.4:1</div></div>
+    <div class="sw"><div class="chip" style="background:#8A8A99"></div><div class="meta"><b>textMuted</b><code>#8A8A99</code> · 3.5:1 (large only)</div></div>
+    <div class="sw"><div class="chip" style="background:#E63946"></div><div class="meta"><b>accent</b><code>#E63946</code> · live / highlight</div></div>
+  </div>
+
+  <div>
+    <div class="preview-card">
+      <div class="top">
+        <div class="home">Bath</div>
+        <div class="score">24 — 17</div>
+        <div class="away">Saracens</div>
+      </div>
+      <div class="meta-row"><span>Round 14 · The Rec</span><span style="color:#0D0D1A;font-weight:700;">FT</span></div>
+      <div class="input">Search match events…</div>
+    </div>
+  </div>
+</div>
+
+<div class="notes">
+  Match Hub now ships with a full light variant (added in <code>lib/core/design/tokens/app_colors.dart</code>). Surfaces are theme-aware via <code>AppColors.background(context)</code> etc.; semantic accents stay constant in both modes so status meaning is never ambiguous.
+</div>
+</body></html>

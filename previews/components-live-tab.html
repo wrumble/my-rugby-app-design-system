@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0D0D1A; font-family: 'DM Sans', sans-serif; padding: 24px; color: #E0E0F0; }
+.label { font-size: 10px; font-family: 'DM Mono', monospace; color: #556677; margin-bottom: 10px; letter-spacing: 0.5px; text-transform: uppercase; }
+.row { display: flex; gap: 24px; flex-wrap: wrap; align-items: flex-start; }
+.frame { width: 360px; background: #0D0D1A; border: 1px solid #3A3A5C; border-radius: 16px; padding: 16px; }
+.section-h { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.8px; color: #E0E0F0; text-transform: uppercase; margin-bottom: 12px; }
+.app-card { background: #1A1A2E; border-radius: 16px; padding: 16px; }
+/* Momentum bar */
+.momentum-bar { height: 28px; border-radius: 10px; overflow: hidden; display: flex; background: #2A2A44; }
+.momentum-bar .home { background: #E63946; }
+.momentum-bar .away { background: #1565C0; }
+.legend { display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 12px; color: #8888AA; margin-top: 6px; }
+.legend .h { color: #FF6B78; }
+.legend .a { color: #4296F0; }
+/* Event feed */
+.event-row { display: flex; gap: 8px; align-items: flex-start; padding: 8px 0; }
+.event-row.try { border-left: 3px solid #E63946; padding-left: 8px; }
+.event-min { width: 32px; font-family: 'DM Mono', monospace; font-size: 12px; color: #556677; }
+.event-icon { font-size: 18px; }
+.event-detail { flex: 1; }
+.event-detail .name { font-size: 13px; font-weight: 600; color: #E0E0F0; }
+.event-detail .sub { font-size: 11px; color: #8888AA; }
+.event-team { font-size: 11px; color: #556677; font-family: 'DM Mono', monospace; }
+.show-more { color: #E63946; font-size: 13px; font-weight: 600; text-align: center; padding: 8px; }
+/* H2H */
+.h2h { display: flex; gap: 6px; margin-top: 8px; }
+.h2h-chip { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 700; }
+.h2h-chip.w { background: #2E7D32; color: #FFFFFF; }
+.h2h-chip.l { background: rgba(229,57,70,0.4); color: #FF6B78; }
+.h2h-chip.d { background: #2A2A44; color: #8888AA; }
+/* Countdown */
+.countdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+.cd { text-align: center; }
+.cd .v { font-family: 'Bebas Neue', sans-serif; font-size: 36px; line-height: 1; color: #E0E0F0; }
+.cd .l { font-family: 'DM Mono', monospace; font-size: 10px; color: #556677; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+/* HT quiz */
+.quiz-q { font-size: 14px; font-weight: 600; color: #E0E0F0; margin-bottom: 8px; }
+.quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+.quiz-opt { padding: 10px; border-radius: 10px; background: #2A2A44; border: 1px solid #3A3A5C; text-align: center; font-size: 13px; }
+.quiz-opt.sel { background: rgba(230,57,70,0.12); border-color: #E63946; color: #FF6B78; }
+.note { margin-top: 16px; max-width: 1100px; font-size: 11px; color: #8888AA; line-height: 1.6; }
+.note code { font-family: 'DM Mono', monospace; color: #FF6B78; font-size: 10px; }
+</style></head><body>
+
+<div class="label">Live tab widgets — match_hub/live</div>
+<div class="row">
+
+  <!-- Countdown -->
+  <div class="frame">
+    <div style="font-size:10px;color:#556677;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">CountdownWidget — live_kickoff_in</div>
+    <div class="app-card">
+      <div style="text-align:center;font-size:13px;color:#8888AA;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;">Kick-off in</div>
+      <div class="countdown-grid">
+        <div class="cd"><div class="v">02</div><div class="l">days</div></div>
+        <div class="cd"><div class="v">14</div><div class="l">hrs</div></div>
+        <div class="cd"><div class="v">28</div><div class="l">min</div></div>
+        <div class="cd"><div class="v">11</div><div class="l">sec</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Momentum bar -->
+  <div class="frame">
+    <div style="font-size:10px;color:#556677;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">MomentumBar / DualProgressBar</div>
+    <div class="app-card">
+      <div class="section-h">Momentum</div>
+      <div class="momentum-bar">
+        <div class="home" style="width:62%;"></div>
+        <div class="away" style="width:38%;"></div>
+      </div>
+      <div class="legend"><div class="h">BAT 62%</div><div class="a">SAR 38%</div></div>
+      <div style="margin-top:16px;font-size:12px;color:#8888AA;line-height:1.6;">Last 5 mins of pressure: Bath winning territory and gainline contests.</div>
+    </div>
+  </div>
+
+  <!-- Event feed -->
+  <div class="frame">
+    <div style="font-size:10px;color:#556677;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">EventFeedSection</div>
+    <div class="app-card">
+      <div class="section-h">Match Events</div>
+      <div class="event-row try">
+        <div class="event-min">62'</div>
+        <div class="event-icon">🏉</div>
+        <div class="event-detail">
+          <div class="name">Finn Russell</div>
+          <div class="sub">Try, converted</div>
+        </div>
+        <div class="event-team">BAT</div>
+      </div>
+      <div class="event-row">
+        <div class="event-min">58'</div>
+        <div class="event-icon">🟨</div>
+        <div class="event-detail">
+          <div class="name">Maro Itoje</div>
+          <div class="sub">High tackle</div>
+        </div>
+        <div class="event-team">SAR</div>
+      </div>
+      <div class="event-row">
+        <div class="event-min">52'</div>
+        <div class="event-icon">🎯</div>
+        <div class="event-detail"><div class="name">Owen Farrell</div></div>
+        <div class="event-team">SAR</div>
+      </div>
+      <div class="event-row">
+        <div class="event-min">44'</div>
+        <div class="event-icon">✅</div>
+        <div class="event-detail"><div class="name">Finn Russell</div></div>
+        <div class="event-team">BAT</div>
+      </div>
+      <div class="event-row try">
+        <div class="event-min">42'</div>
+        <div class="event-icon">🏉</div>
+        <div class="event-detail">
+          <div class="name">Ben Spencer</div>
+          <div class="sub">Try, converted</div>
+        </div>
+        <div class="event-team">BAT</div>
+      </div>
+      <div class="show-more">Show more events</div>
+    </div>
+  </div>
+
+  <!-- H2H -->
+  <div class="frame">
+    <div style="font-size:10px;color:#556677;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">H2hChipRow</div>
+    <div class="app-card">
+      <div class="section-h">Last 5 meetings</div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.5px;">BAT</div>
+        <div class="h2h">
+          <div class="h2h-chip w">W</div>
+          <div class="h2h-chip l">L</div>
+          <div class="h2h-chip w">W</div>
+          <div class="h2h-chip d">D</div>
+          <div class="h2h-chip w">W</div>
+        </div>
+      </div>
+      <div style="margin-top:8px;font-size:12px;color:#8888AA;font-family:'DM Mono',monospace;">3W · 1D · 1L</div>
+    </div>
+  </div>
+
+  <!-- HT quiz -->
+  <div class="frame">
+    <div style="font-size:10px;color:#556677;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">HtQuizWidget</div>
+    <div class="app-card">
+      <div class="section-h">Half-Time Quiz</div>
+      <div class="quiz-q">1. Who scored Bath's first try?</div>
+      <div class="quiz-options">
+        <div class="quiz-opt">Tom du Toit</div>
+        <div class="quiz-opt sel">Ben Spencer</div>
+        <div class="quiz-opt">Beno Obano</div>
+        <div class="quiz-opt">Joe Cokanasiga</div>
+      </div>
+      <div class="quiz-q">2. Half-time score?</div>
+      <div class="quiz-options">
+        <div class="quiz-opt">14 – 7</div>
+        <div class="quiz-opt sel">17 – 10</div>
+        <div class="quiz-opt">21 – 7</div>
+        <div class="quiz-opt">14 – 14</div>
+      </div>
+      <div style="background:#1B3A6B;color:#F0F0F0;padding:12px;border-radius:32px;text-align:center;font-weight:600;font-size:14px;">Submit answers</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="note">
+  Live tab widgets are the bulk of <code>match_hub/presentation/widgets/live/</code>. All sit on Match Hub navy <code>surface</code> via <code>AppCard</code> + the local <code>SectionHeader</code>. <code>MomentumBar</code> is built on the shared <code>DualProgressBar</code> primitive (auto-normalises so home + away ≤ 1, animates with <code>AppDurations.slow</code> + <code>AppCurves.standard</code>). <code>EventFeedSection</code> uses an emoji-icon convention (🏉 try, ✅ conversion, 🎯 penalty, 🟨 yellow, 🟥 red, ⬇️ scrum, 📌 lineout) — try events get a 3pt left border in <code>colorScheme.primary</code> as a colour+structure cue. <code>HtQuizWidget</code> shows during HALFTIME phase only; uses <code>FilledButton</code> pill submit. Initial event feed shows 5; <code>AnimatedSize</code> reveals the rest with <code>AppCurves.decelerate</code> on tap of "Show more events".
+</div>
+
+</body></html>

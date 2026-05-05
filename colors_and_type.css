@@ -1,0 +1,637 @@
+/*
+ * My Rugby App — Design Tokens v2
+ * CSS custom properties mirroring lib/core/design/ and lib/app/theme/
+ *
+ * ARCHITECTURE: two-layer colour system
+ * ─────────────────────────────────────
+ * 1. NEUTRAL CHROME  — never changes. Near-black surfaces, pure-white text,
+ *    invisible borders. Works identically regardless of which team is loaded.
+ *
+ * 2. TEAM ACCENT     — one variable (--color-accent / --color-on-accent).
+ *    Comes from TeamTheme.accentColor in the Wagtail CMS.
+ *    Used SPARINGLY: active nav icon, primary CTA, underline indicator,
+ *    badge tint, focus ring. Never as a large background fill.
+ *
+ * This means any team colour — Bath navy, Harlequins pink, Tigers green —
+ * looks great because the chrome never competes with it.
+ */
+
+/* ── Web fonts ─────────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('./fonts/BebasNeue-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'DM Sans';
+  src: url('./fonts/DMSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'DM Mono';
+  src: url('./fonts/DMMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Fallback: Google Fonts CDN */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   * LAYER 1: NEUTRAL CHROME
+   * Never changes. Pure dark grays. WCAG AA compliant.
+   * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+  /* Backgrounds — stepped neutrals */
+  --bg:          #080808;   /* scaffold / screen bg */
+  --surface-1:   #0F0F0F;   /* cards — barely lifted */
+  --surface-2:   #161616;   /* inputs, chips, elevated */
+  --border:      #1E1E1E;   /* hairline borders — nearly invisible */
+  --border-mid:  #2A2A2A;   /* dividers, separators */
+
+  /* Text — all pass WCAG AA on --bg */
+  --text-1: #F2F2F2;   /* 18.0:1 — primary labels, headlines */
+  --text-2: #8A8A8A;   /*  5.9:1 — secondary / meta */
+  --text-3: #5A5A5A;   /*  3.6:1 — large/bold only: section labels, timestamps ≥17px bold */
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   * LAYER 2: TEAM ACCENT (dynamic — set by TeamTheme from CMS)
+   * Replace with the team's accentColor at runtime.
+   * Default fallback = a neutral blue for when no team is loaded.
+   * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  --color-accent:    #4A7FD4;   /* fallback — neutral blue, not team-specific */
+  --color-on-accent: #FFFFFF;
+
+  /* Accent tints — computed from accent at runtime, or use these CSS formulas */
+  --color-accent-tint-10: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  --color-accent-tint-15: color-mix(in srgb, var(--color-accent) 15%, transparent);
+  --color-accent-tint-20: color-mix(in srgb, var(--color-accent) 20%, transparent);
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   * SEMANTIC STATUS COLOURS
+   * Fixed — never team-themed. Always paired with icon + text label.
+   * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  --color-live:           #D32F2F;   /* LIVE badge — 5.0:1 on white */
+  --color-on-live:        #FFFFFF;
+  --color-success:        #2E7D32;   /* win / completed */
+  --color-on-success:     #FFFFFF;
+  --color-success-surface:#0D2B0E;   /* tinted success backdrop (AppColors.successSurface) */
+  --color-warning:        #E07B00;   /* upcoming deadlines — brightened from F57F17 for AA */
+  --color-on-warning:     #000000;
+  --color-blue-500:       #1565C0;   /* informational accent (AppColors.colorBlue500) */
+  --color-white:          #FFFFFF;
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   * MATCH HUB — theme-aware navy palette
+   * Used only in Match Hub feature. Dark navy = "night game" distinct context.
+   * Light-mode tokens added — Match Hub now has a full light variant
+   * (matches lib/core/design/tokens/app_colors.dart).
+   * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* Match Hub — DARK */
+  --navy-bg:               #0D0D1A;   /* scaffold */
+  --navy-surface:          #1A1A2E;   /* score banner / sections */
+  --navy-surface-elevated: #2A2A44;   /* modals, raised cards, input fills */
+  --navy-border:           #3A3A5C;   /* subtle border / divider */
+  --navy-text-1:           #E0E0F0;   /* 13.1:1 on navy-surface — AAA */
+  --navy-text-2:           #8888AA;   /*  5.0:1 on navy-surface — AA  */
+  --navy-text-3:           #556677;   /* muted / disabled / placeholder */
+  --navy-highlight:        #FF6B78;   /*  6.2:1 on navy-surface — AA (tab underlines) */
+
+  /* Match Hub — LIGHT (new — was previously dark-only) */
+  --navy-bg-light:               #F5F5F5;
+  --navy-surface-light:           #FFFFFF;
+  --navy-surface-elevated-light:  #E8E8EC;
+  --navy-border-light:            #D0D0D6;
+  --navy-text-1-light:            #0D0D1A;
+  --navy-text-2-light:            #555566;
+  --navy-text-3-light:            #8A8A99;
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   * LEGACY ALIASES — keep old names working during Flutter migration
+   * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  --color-bg-dark:             var(--bg);
+  --color-surface-dark:        var(--surface-1);
+  --color-surface-elevated:    var(--surface-2);
+  --color-border-dark:         var(--border-mid);
+  --color-text-primary-dark:   var(--text-1);
+  --color-text-secondary-dark: var(--text-2);
+  --color-text-tertiary-dark:  var(--text-3);
+  --color-navy-900:            var(--navy-bg);
+  --color-navy-700:            var(--navy-surface);
+  --color-navy-600:            var(--navy-border);
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   * TYPOGRAPHY
+   * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  --font-display: 'Bebas Neue', Impact, 'Arial Narrow', sans-serif;
+  --font-body:    'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:    'DM Mono', 'Courier New', monospace;
+
+  /* Font size scale — 4pt grid */
+  --font-size-xs:         11px;
+  --font-size-sm:         12px;
+  --font-size-card-title: 13px;
+  --font-size-md:         14px;
+  --font-size-lg:         16px;
+  --font-size-body:       17px;
+  --font-size-xl:         20px;
+  --font-size-title-2:    22px;
+  --font-size-xxl:        24px;
+  --font-size-title-1:    28px;
+  --font-size-display-sm: 36px;
+  --font-size-display-md: 48px;
+  --font-size-display-lg: 64px;
+
+  /* Font weight tokens */
+  --font-weight-regular:   400;
+  --font-weight-medium:    500;
+  --font-weight-semibold:  600;
+  --font-weight-bold:      700;
+  --font-weight-extrabold: 800;
+
+  /* Line height — WCAG 1.4.12 */
+  --line-height-display: 1.05;
+  --line-height-heading: 1.35;
+  --line-height-body:    1.6;
+  --line-height-caption: 1.5;
+  --line-height-mono:    1.4;
+
+  /* Letter spacing */
+  --letter-spacing-dark: 0.3px;
+  --letter-spacing-caps: 0.5px;
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   * SPACING — 8pt grid
+   * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  --space-xxs:   4px;
+  --space-xs:    8px;
+  --space-sm:   12px;
+  --space-md:   16px;
+  --space-lg:   20px;
+  --space-xl:   24px;
+  --space-xxl:  32px;
+  --space-xxxl: 40px;
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   * BORDER RADIUS
+   * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  --radius-xs:   4px;   /* badges */
+  --radius-sm:   8px;   /* images, chips */
+  --radius-md:  12px;   /* cards — tightened from 16 for more minimal feel */
+  --radius-lg:  20px;   /* bottom sheets, dialogs */
+  --radius-pill: 8px;   /* buttons — square-ish, editorial, not bubbly */
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   * ELEVATION — minimal; prefer borders over shadows
+   * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  --shadow-none:   none;
+  --shadow-low:    0 1px 0 var(--border);       /* subtle hairline lift */
+  --shadow-medium: 0 4px 16px rgba(0,0,0,0.5);
+  --shadow-high:   0 8px 32px rgba(0,0,0,0.7);
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   * ANIMATION
+   * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  --duration-fast:    150ms;
+  --duration-medium:  300ms;
+  --duration-slow:    500ms;
+  --duration-entrance:600ms;
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-decel:    cubic-bezier(0.0, 0, 0.2, 1);
+  --ease-spring:   cubic-bezier(0.175, 0.885, 0.32, 1.275); /* approx Curves.elasticOut */
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   * ACCESSIBILITY
+   * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  --focus-ring-color: #5B9FFF;
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 2px;
+
+  /* High-contrast mode */
+  --hc-bg:       #000000;
+  --hc-surface:  #0A0A0A;
+  --hc-border:   #444444;
+  --hc-text-1:   #FFFFFF;
+  --hc-text-2:   #DDDDDD;
+  --hc-text-3:   #AAAAAA;
+}
+
+/* ── Global dark defaults ────────────────────────────────────────────────── */
+.app-dark {
+  background: var(--bg);
+  color: var(--text-1);
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-dark);
+  line-height: var(--line-height-body);
+}
+
+/* ── High-contrast override ──────────────────────────────────────────────── */
+.hc {
+  --bg:         var(--hc-bg);
+  --surface-1:  var(--hc-surface);
+  --surface-2:  var(--hc-surface);
+  --border:     var(--hc-border);
+  --border-mid: var(--hc-border);
+  --text-1:     var(--hc-text-1);
+  --text-2:     var(--hc-text-2);
+  --text-3:     var(--hc-text-3);
+}
+
+/* ── OS preferences ──────────────────────────────────────────────────────── */
+@media (prefers-contrast: more) {
+  :root {
+    --text-2: #AAAAAA;
+    --text-3: #888888;
+    --border-mid: #444444;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* ── Focus rings ─────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* ── Card ────────────────────────────────────────────────────────────────── */
+/* Minimal: border instead of shadow, tight radius */
+.app-card {
+  background: var(--surface-1);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  padding: var(--space-md);
+  transition: transform 100ms var(--ease-decel);
+}
+.app-card:active { transform: scale(0.97); }
+.app-card--outlined {
+  background: transparent;
+  border: 1px solid var(--border-mid);
+}
+.app-card--flat {
+  background: var(--surface-2);
+  border: none;
+}
+
+/* ── Badge ───────────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex; align-items: center; gap: 3px;
+  padding: 3px 7px; border-radius: var(--radius-xs);
+  font-family: var(--font-body); font-size: 10px; font-weight: 700;
+  letter-spacing: var(--letter-spacing-caps); text-transform: uppercase; line-height: 1.2;
+}
+.badge--live    { background: var(--color-live);    color: var(--color-on-live); }
+.badge--success { background: var(--color-success); color: var(--color-on-success); }
+.badge--warning { background: var(--color-warning); color: var(--color-on-warning); }
+/* Accent badge — uses team colour */
+.badge--accent  { background: var(--color-accent-tint-15); color: var(--color-accent); }
+
+/* ── Button ──────────────────────────────────────────────────────────────── */
+/* Squarish pill (radius 8) — modern editorial feel, not bubbly */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-pill);
+  padding: 11px var(--space-xl);
+  font-family: var(--font-body); font-size: var(--font-size-md); font-weight: 600;
+  border: none; cursor: pointer; letter-spacing: 0.2px;
+  transition: transform 100ms var(--ease-decel), opacity 100ms;
+}
+.btn:active { transform: scale(0.97); }
+/* Filled — uses team accent */
+.btn--filled   { background: var(--color-accent); color: var(--color-on-accent); }
+.btn--outlined { background: transparent; color: var(--color-accent); border: 1.5px solid var(--color-accent); }
+/* Neutral — no team colour, always safe */
+.btn--neutral  { background: var(--surface-2); color: var(--text-1); }
+
+/* ── Display / Bebas Neue ────────────────────────────────────────────────── */
+.display-lg { font-family: var(--font-display); font-size: var(--font-size-display-lg); letter-spacing: 2px; line-height: var(--line-height-display); font-weight: 400; }
+.display-md { font-family: var(--font-display); font-size: var(--font-size-display-md); letter-spacing: 1.5px; line-height: var(--line-height-display); font-weight: 400; }
+.display-sm { font-family: var(--font-display); font-size: var(--font-size-display-sm); letter-spacing: 1px; line-height: var(--line-height-display); font-weight: 400; }
+
+/* ── Body / DM Sans ──────────────────────────────────────────────────────── */
+.body-lg { font-family: var(--font-body); font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.body-md { font-family: var(--font-body); font-size: var(--font-size-md);   line-height: var(--line-height-body); }
+.body-sm { font-family: var(--font-body); font-size: var(--font-size-sm);   line-height: var(--line-height-caption); }
+
+/* ── Mono / DM Mono ──────────────────────────────────────────────────────── */
+.mono-lg { font-family: var(--font-mono); font-size: var(--font-size-xxl); font-weight: 500; line-height: var(--line-height-mono); }
+.mono-md { font-family: var(--font-mono); font-size: var(--font-size-lg);  font-weight: 400; line-height: var(--line-height-mono); }
+.mono-sm { font-family: var(--font-mono); font-size: var(--font-size-sm);  font-weight: 400; line-height: var(--line-height-mono); }
+
+
+/* ── Web fonts ─────────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('./fonts/BebasNeue-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'DM Sans';
+  src: url('./fonts/DMSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'DM Mono';
+  src: url('./fonts/DMMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Fallback: Google Fonts CDN (in case local TTFs are absent) */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ── Brand colours ─────────────────────────────────────────────── */
+  --color-rugby-blue:   #1B3A6B;
+  --color-rugby-gold:   #C8A44A;
+
+  /* ── Dark palette (primary experience) ────────────────────────── */
+  --color-bg-dark:              #080808;  /* scaffold background */
+  --color-surface-dark:         #111111;  /* cards */
+  --color-surface-elevated:     #1A1A1A;  /* inputs, chips */
+  --color-border-dark:          #2A2A2A;  /* borders, dividers */
+
+  --color-text-primary-dark:    #F0F0F0;  /* 17.6:1 on #080808 — AAA */
+  --color-text-secondary-dark:  #888888;  /*  5.6:1 on #080808 — AA  */
+  --color-text-tertiary-dark:   #7E7E7E;  /*  4.9:1 on #080808 — AA  (was #444444 = 2.1:1 FAIL) */
+
+  /* ── Light palette ─────────────────────────────────────────────── */
+  --color-bg-light:     #F5F5F5;
+  --color-surface-light:#FFFFFF;
+
+  /* ── Match Hub navy palette ────────────────────────────────────── */
+  --color-navy-900: #0D0D1A;  /* Match Hub scaffold */
+  --color-navy-700: #1A1A2E;  /* score banner */
+  --color-navy-600: #2A2A44;  /* cards inside Match Hub */
+  /* Match Hub text — all pass AA on navy700 (#1A1A2E) */
+  --color-navy-text-primary:   #E0E0F0;  /* 13.1:1 — AAA */
+  --color-navy-text-secondary: #8888AA;  /*  5.0:1 — AA  */
+  --color-navy-text-muted:     #7A8FA3;  /*  5.1:1 — AA  (was #556677 = 2.9:1 FAIL) */
+
+  /* ── Accent / feature colours ──────────────────────────────────── */
+  --color-red-500:       #E63946;  /* Match Hub chips on dark card backgrounds */
+  --color-red-500-navy:  #FF6B78;  /* 6.2:1 on navy700 — use for tab indicators on navy (was #E63946 = 4.1:1 FAIL) */
+  --color-red-600:       #C4212E;
+  --color-green-500: #4CAF50;
+  --color-amber-500: #FFB74D;  /* half-time chip */
+
+  /* ── Semantic status colours ───────────────────────────────────── */
+  --color-live:       #D32F2F;  /* LIVE badge background */
+  --color-on-live:    #FFFFFF;
+  --color-success:    #2E7D32;
+  --color-on-success: #FFFFFF;
+  --color-warning:    #F57F17;
+  --color-on-warning: #000000;  /* black text on amber */
+  --color-accent:     #C8A44A;  /* default accent = rugby gold */
+  --color-on-accent:  #000000;
+
+  /* ── Neutral scale ─────────────────────────────────────────────── */
+  --color-neutral-100: #FFFFFF;
+  --color-neutral-95:  #F5F5F5;
+  --color-neutral-90:  #E5E5E5;
+  --color-neutral-80:  #CCCCCC;
+  --color-neutral-50:  #808080;
+  --color-neutral-30:  #4D4D4D;
+  --color-neutral-10:  #1A1A1A;
+  --color-neutral-0:   #000000;
+
+  /* ── Typography: font families ─────────────────────────────────── */
+  --font-display: 'Bebas Neue', Impact, 'Arial Narrow', sans-serif;
+  --font-body:    'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:    'DM Mono', 'Courier New', monospace;
+
+  /* ── Typography: size scale (4pt grid) ────────────────────────── */
+  --font-size-xs:          11px;  /* timestamps, badges */
+  --font-size-sm:          12px;  /* labels, captions, nav labels */
+  --font-size-card-title:  13px;  /* compact card titles */
+  --font-size-md:          14px;  /* body copy, list subtitles */
+  --font-size-lg:          16px;  /* section subheadings, tile titles */
+  --font-size-body:        17px;  /* article body — Apple HIG */
+  --font-size-xl:          20px;  /* screen headings */
+  --font-size-title-2:     22px;  /* article H2 */
+  --font-size-xxl:         24px;  /* scores, splash headings */
+  --font-size-title-1:     28px;  /* article H1 */
+  --font-size-display-sm:  36px;  /* section hero */
+  --font-size-display-md:  48px;  /* team name splash */
+  --font-size-display-lg:  64px;  /* hero score */
+
+  /* ── Typography: weight tokens ─────────────────────────────────── */
+  --font-weight-regular:    400;
+  --font-weight-medium:     500;
+  --font-weight-semibold:   600;
+  --font-weight-bold:       700;
+  --font-weight-extrabold:  800;
+
+  /* ── Spacing (8pt grid) ─────────────────────────────────────────── */
+  --space-xxs:   4px;
+  --space-xs:    8px;
+  --space-sm:   12px;
+  --space-md:   16px;
+  --space-lg:   20px;
+  --space-xl:   24px;
+  --space-xxl:  32px;
+  --space-xxxl: 40px;
+
+  /* ── Border radius ──────────────────────────────────────────────── */
+  --radius-xs:   4px;   /* badges, LIVE chip */
+  --radius-sm:  10px;   /* images, content blocks */
+  --radius-md:  16px;   /* cards */
+  --radius-lg:  24px;   /* bottom sheets, dialogs */
+  --radius-pill: 32px;  /* buttons, inputs */
+
+  /* ── Elevation (box-shadow equivalents) ─────────────────────────── */
+  --shadow-none:   none;
+  --shadow-low:    0 1px 2px rgba(0,0,0,0.4);
+  --shadow-medium: 0 4px 12px rgba(0,0,0,0.5);
+  --shadow-high:   0 8px 24px rgba(0,0,0,0.6);
+
+  /* ── Line height tokens ─────────────────────────────────────────── */
+  /* Minimum 1.5× body, 1.4× headings — WCAG 1.4.12 compliance */
+  --line-height-display:  1.1;   /* Bebas Neue — tight is intentional at large sizes */
+  --line-height-heading:  1.35;  /* DM Sans headings */
+  --line-height-body:     1.6;   /* DM Sans body — generous for dark-mode legibility */
+  --line-height-caption:  1.5;   /* small text / captions */
+  --line-height-mono:     1.4;   /* DM Mono — tabular data */
+
+  /* ── Letter spacing ─────────────────────────────────────────────── */
+  --letter-spacing-dark:   0.3px; /* global dark-mode bump per app_theme.dart */
+  --letter-spacing-caps:   0.5px; /* ALL-CAPS badges / labels */
+  --letter-spacing-mono:   0;     /* DM Mono — no extra spacing; alignment matters */
+
+  /* ── Focus rings (web) ──────────────────────────────────────────── */
+  --focus-ring-color:  #5B9FFF;   /* high-visibility blue, 4.5:1+ on both dark/light */
+  --focus-ring-width:  3px;
+  --focus-ring-offset: 2px;
+
+  /* ── High-contrast mode overrides ──────────────────────────────── */
+  /* Apply .hc class to root element for WCAG AAA (7:1) everywhere */
+  --hc-bg:              #000000;
+  --hc-surface:         #0D0D0D;
+  --hc-text-primary:    #FFFFFF;  /* 21:1 */
+  --hc-text-secondary:  #E0E0E0;  /* 16.1:1 */
+  --hc-text-tertiary:   #BBBBBB;  /*  9.2:1 */
+  --hc-border:          #555555;
+  --hc-accent:          #FFD700;  /* gold shifted brighter → 12.6:1 on black */
+  --hc-live:            #FF4444;  /* brighter red → still clearly "live" */
+  --hc-success:         #44FF88;  /* bright green → 13.3:1 on black */
+  --hc-warning:         #FFD700;  /* gold → 12.6:1 on black */
+
+  /* ── Colorblind-safe semantic aliases ───────────────────────────── */
+  /* For deuteranopia/protanopia (red-green, 8% of males):            */
+  /* Never rely on red vs green alone — always pair with:             */
+  /*   • text label (LIVE / SUCCESS / WARNING)                        */
+  /*   • distinct icon/shape (pulsing dot, checkmark, triangle)       */
+  /*   • positional or pattern cue where possible                     */
+  --color-cb-live:    #E63946;  /* red — always accompanied by "LIVE" text + dot */
+  --color-cb-success: #2E7D32;  /* green — always accompanied by ✓ icon + label  */
+  --color-cb-warning: #F57F17;  /* amber — always accompanied by ⚠ icon + label  */
+
+  /* ── Animation durations ────────────────────────────────────────── */
+  --duration-instant:  0ms;
+  --duration-fast:    150ms;
+  --duration-medium:  300ms;
+  --duration-slow:    500ms;
+  --duration-entrance:600ms;
+
+  /* ── Animation curves ───────────────────────────────────────────── */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);   /* easeInOut */
+  --ease-decel:    cubic-bezier(0.0, 0, 0.2, 1);   /* easeOut */
+  --ease-spring:   cubic-bezier(0.175, 0.885, 0.32, 1.275); /* approx elasticOut */
+}
+
+/* ── Semantic element defaults (dark mode, the primary surface) ──────────── */
+.app-dark {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-primary-dark);
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-dark);
+  line-height: var(--line-height-body);
+}
+
+/* ── High-contrast mode ──────────────────────────────────────────────────── */
+.hc, .app-dark.hc {
+  --color-bg-dark:           var(--hc-bg);
+  --color-surface-dark:      var(--hc-surface);
+  --color-text-primary-dark: var(--hc-text-primary);
+  --color-text-secondary-dark: var(--hc-text-secondary);
+  --color-text-tertiary-dark:  var(--hc-text-tertiary);
+  --color-border-dark:       var(--hc-border);
+  --color-rugby-gold:        var(--hc-accent);
+  --color-live:              var(--hc-live);
+  --color-success:           var(--hc-success);
+  --color-warning:           var(--hc-warning);
+}
+
+/* ── Respect OS-level preference ────────────────────────────────────────── */
+@media (prefers-contrast: more) {
+  :root {
+    --color-text-secondary-dark: #BBBBBB;
+    --color-text-tertiary-dark:  #999999;
+    --color-border-dark:         #555555;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* ── Focus rings (web) ───────────────────────────────────────────────────── */
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: 4px;
+}
+
+/* ── Display / Bebas Neue headings ───────────────────────────────────────── */
+.display-lg {
+  font-family: var(--font-display);
+  font-size: var(--font-size-display-lg);
+  letter-spacing: 2px;
+  font-weight: 400;   /* Bebas is heavy by design */
+}
+.display-md {
+  font-family: var(--font-display);
+  font-size: var(--font-size-display-md);
+  letter-spacing: 1.5px;
+  font-weight: 400;
+}
+.display-sm {
+  font-family: var(--font-display);
+  font-size: var(--font-size-display-sm);
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+/* ── Body styles — DM Sans ───────────────────────────────────────────────── */
+.body-lg { font-family: var(--font-body); font-size: var(--font-size-body); font-weight: var(--font-weight-regular); }
+.body-md { font-family: var(--font-body); font-size: var(--font-size-md);   font-weight: var(--font-weight-regular); }
+.body-sm { font-family: var(--font-body); font-size: var(--font-size-sm);   font-weight: var(--font-weight-regular); }
+
+/* ── Mono styles — DM Mono ───────────────────────────────────────────────── */
+.mono-lg { font-family: var(--font-mono); font-size: var(--font-size-xxl);  font-weight: var(--font-weight-medium); }
+.mono-md { font-family: var(--font-mono); font-size: var(--font-size-lg);   font-weight: var(--font-weight-regular); }
+.mono-sm { font-family: var(--font-mono); font-size: var(--font-size-sm);   font-weight: var(--font-weight-regular); }
+
+/* ── Card ────────────────────────────────────────────────────────────────── */
+.app-card {
+  background-color: var(--color-surface-dark);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-low);
+  padding: var(--space-md);
+  transition: transform 100ms var(--ease-decel);
+}
+.app-card:active { transform: scale(0.97); }
+.app-card--outlined {
+  background-color: var(--color-surface-dark);
+  border: 1px solid var(--color-border-dark);
+  box-shadow: none;
+}
+.app-card--flat {
+  background-color: var(--color-surface-elevated);
+  box-shadow: none;
+}
+
+/* ── Badge ───────────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xxs);
+  padding: var(--space-xxs) var(--space-xs);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+.badge--live    { background: var(--color-live);    color: var(--color-on-live); }
+.badge--success { background: var(--color-success); color: var(--color-on-success); }
+.badge--warning { background: var(--color-warning); color: var(--color-on-warning); }
+.badge--accent  { background: rgba(200,164,74,0.15); color: var(--color-accent); }
+
+/* ── Button ──────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  padding: var(--space-sm) var(--space-xl);
+  font-family: var(--font-body);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  border: none;
+  cursor: pointer;
+  transition: transform 100ms var(--ease-decel);
+}
+.btn:active { transform: scale(0.97); }
+.btn--filled   { background: var(--color-rugby-blue); color: #fff; }
+.btn--outlined { background: transparent; color: var(--color-rugby-blue); border: 2px solid var(--color-rugby-blue); }
+.btn--accent   { background: var(--color-rugby-gold); color: #000; }
