@@ -46,7 +46,7 @@ These are ordered for a clean PR sequence — start at task 1.
 3. **Promote shared widgets to `lib/shared/widgets/`:**
    - `SectionHeader` (currently in `match_hub/presentation/widgets/shared/`) — already used widely
    - `PoolTabBar` (currently in `standings/presentation/widgets/`) — generic enough
-   - `SettingsGroup` (extract from `profile_screen.dart`) — currently a private widget
+   - ~~`SettingsGroup`~~ — DONE: already public at `lib/shared/widgets/settings_group.dart` (used by every profile settings group)
 
 4. **Add light-mode tokens.** `colors_and_type.css` now defines a Match Hub light palette (in addition to dark). Implement `MatchHubTheme.light` mirroring the existing `MatchHubTheme.dark` extension.
 
