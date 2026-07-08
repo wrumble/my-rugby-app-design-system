@@ -381,6 +381,7 @@
   --color-red-600:       #C4212E;
   --color-green-500: #4CAF50;
   --color-amber-500: #FFB74D;  /* half-time chip */
+  --color-orange-600: #E8590C;  /* burnt red-orange — missed-kick timeline pips (AppColors.orange600) */
 
   /* ── Semantic status colours ───────────────────────────────────── */
   --color-live:       #D32F2F;  /* LIVE badge background */
