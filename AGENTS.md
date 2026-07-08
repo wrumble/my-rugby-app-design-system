@@ -25,11 +25,12 @@
 ```
 Editors → CMS (Django/Wagtail, primary Postgres) ─┬─ Postgres read replica ─→ content-api / rugby-api ─→ Flutter app
                                                    └─ Redis pub/sub (cache invalidation) ─→ content-api / rugby-api
-CMS → Firestore (signal bus only) ─→ Flutter app + admin (which re-fetch from the REST API on signal)
+CMS → Firestore (signals + live-match plane) ─→ Flutter app + admin + tvOS
 ```
 
 - **CMS owns the data.** The two FastAPI services are read-only views over a Postgres replica; Redis pub/sub drives their cache invalidation.
-- **Firestore is a signal bus, not a database.** Producers write a signal; consumers re-fetch from REST. Never move real data through it.
+- **Firestore is a signal bus by default** — producers write a signal; consumers re-fetch from REST.
+  Sanctioned exception: the live-match ephemeral plane (`matches/*`, `league_scores/*`, `weather/*`) — see `my-rugby-app-cms/docs/adr-firestore-signal-bus.md`.
 
 ## Design tokens — this repo's job
 
