@@ -79,6 +79,9 @@
   --color-success:        #2E7D32;   /* win / completed */
   --color-on-success:     #FFFFFF;
   --color-success-surface:#0D2B0E;   /* tinted success backdrop (AppColors.successSurface) */
+  --color-error-surface:  #2B0A0A;   /* tinted error backdrop (AppColors.errorSurface) */
+  --color-warning-surface:#2B1D00;   /* tinted warning backdrop (AppColors.warningSurface) */
+  --color-neutral-label:  #737373;   /* muted neutral label (AppColors.neutralLabel) */
   --color-warning:        #E07B00;   /* upcoming deadlines — brightened from F57F17 for AA */
   --color-on-warning:     #000000;
   --color-blue-500:       #1565C0;   /* informational accent (AppColors.colorBlue500) */
