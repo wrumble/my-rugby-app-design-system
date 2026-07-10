@@ -84,6 +84,7 @@ Design system code lives primarily in:
 **Semantic**
 - Live: `#D32F2F` (red, with pulsing dot animation)
 - Success: `#2E7D32` (green); successSurface: `#0D2B0E` (tinted backdrop)
+- errorSurface: `#2B0A0A`; warningSurface: `#2B1D00` (tinted backdrops); neutralLabel: `#737373`
 - Warning: `#F57F17` (amber, black text on top)
 - Info / Blue: `#1565C0` (`AppColors.colorBlue500`)
 - White: `#FFFFFF` (`AppColors.colorWhite`)
