@@ -1,27 +1,31 @@
 # Design System — My Rugby App
 
-See @AGENTS.md for how this bundle fits the wider estate.
+See @AGENTS.md for repo facts and the estate pointer.
 
-This repo is the **canonical design reference** for the Flutter app: design tokens (`colors_and_type.css`) plus 35 HTML preview cards (`previews/`). It is documentation and reference, **not production code** — nothing here ships directly. Default branch: `main`.
+Canonical design reference: design tokens (`colors_and_type.css`) plus 35 HTML preview cards (`previews/`). Reference, not production code — nothing here ships. Ref branch: `main`.
 
-## What's here
+## Layout
 ```
-colors_and_type.css   # SOURCE OF TRUTH for design *values* (colours, type, spacing, radius, animation)
-DESIGN_SYSTEM.md      # full design system reference
-README.md             # handoff overview + widget mapping table
-previews/             # 35 preview cards; previews/_index.html is the navigable index
-IMPLEMENTATION_TASKS.md  # ranked first tasks for implementing against the Flutter app
+colors_and_type.css      # SOURCE OF TRUTH for design values (colour, type, spacing, radius, animation)
+DESIGN_SYSTEM.md         # full reference
+README.md                # handoff overview + widget mapping
+index.html               # root handoff page linking the docs and previews
+previews/                # 35 cards (no _index.html; navigate via root index.html)
+IMPLEMENTATION_TASKS.md  # ranked Flutter implementation tasks
+CONTRACTS.md             # states this repo consumes no contracts
+GIT_SETUP.md             # historical repo-layout notes
 ```
-There is no build step or test suite — open the HTML files in a browser (`open previews/_index.html`).
+No build step, no tests, no CI. View with `open index.html`. GitHub Actions is dead estate-wide; the only machine check touching this repo is `rugby-ci design-drift`.
 
-## Project-specific rules
-- **`colors_and_type.css` is the source of truth for design *values*; `my-rugby-app/lib/core/design/tokens/*.dart` is the source of truth for *implementation*.** Keep them in lock-step — a change here must be mirrored in the Flutter token files (and that repo's README) in the same logical change.
-- **Previews are references, not code to copy.** Each card maps to an existing or to-be-created Flutter widget — see the mapping table in `README.md`. Don't treat the HTML as the implementation.
-- **Never introduce one-off values.** Every colour, font size, spacing, and radius must be a token already defined in `colors_and_type.css`. If a value doesn't exist, add it as a named token — don't inline a hex/px literal.
-- **Zero emoji.** The whole system uses the line-icon set in `previews/components-icon-set.html`. Do not add emoji anywhere.
-- **Accessibility is a hard requirement.** Body text contrast ≥ 4.5:1; visible focus states; honour reduced-motion. See `previews/accessibility-audit.html`.
+## Rules
+- **Values here, implementation in `my-rugby-app/lib/core/design/tokens/*.dart`.** Change one, change the other in the same logical change. tvOS mirrors the values in `my-rugby-app-tvos/MyRugbyAppTV/Shared/DesignTokens.swift`.
+- Previews are references, not code to copy; each maps to a Flutter widget in `README.md`.
+- No one-off values: every colour, size, spacing and radius is a named token in `colors_and_type.css`; add a token rather than inline a literal.
+- Zero emoji; use the line-icon set in `previews/components-icon-set.html`.
+- Accessibility is hard: body contrast >= 4.5:1, visible focus, honour reduced-motion (`previews/accessibility-audit.html`).
 
-## When changing tokens
+## Changing tokens
 1. Edit `colors_and_type.css`.
 2. Update `DESIGN_SYSTEM.md` / `README.md` if the token set or guidance changed.
-3. Mirror the change into `my-rugby-app/lib/core/design/tokens/*.dart` (the implementation SOT) — they must not drift.
+3. Mirror into the Flutter token files and tvOS `DesignTokens.swift`.
+4. Run `rugby-ci design-drift`.
