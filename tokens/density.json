@@ -1,0 +1,26 @@
+{
+  "density": {
+    "$type": "dimension",
+    "$description": "Control and table density. `comfortable` is the app's touch sizing (44px targets). `compact` is a proposed set for pointer-driven surfaces such as admin; it is below the 44px touch target and must not be used on touch UIs. Every value references the spacing or type scale.",
+    "comfortable": {
+      "controlHeight": { "$value": "{size.minTapTarget}" },
+      "controlPaddingX": { "$value": "{space.md}" },
+      "controlPaddingY": { "$value": "{space.sm}" },
+      "rowHeight": { "$value": "{size.minTapTarget}" },
+      "cellPaddingX": { "$value": "{space.md}" },
+      "cellPaddingY": { "$value": "{space.sm}" },
+      "gap": { "$value": "{space.md}" },
+      "fontSize": { "$value": "{font.size.md}" }
+    },
+    "compact": {
+      "controlHeight": { "$value": "{space.xxl}" },
+      "controlPaddingX": { "$value": "{space.sm}" },
+      "controlPaddingY": { "$value": "{space.xxs}" },
+      "rowHeight": { "$value": "{space.xxl}" },
+      "cellPaddingX": { "$value": "{space.sm}" },
+      "cellPaddingY": { "$value": "{space.xxs}" },
+      "gap": { "$value": "{space.xs}" },
+      "fontSize": { "$value": "{font.size.cardTitle}" }
+    }
+  }
+}

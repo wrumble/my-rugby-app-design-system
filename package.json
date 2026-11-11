@@ -1,0 +1,17 @@
+{
+  "name": "my-rugby-app-design-tokens",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Single source of design tokens for the My Rugby App estate (DTCG JSON built by Style Dictionary).",
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "check": "node build.mjs --check"
+  },
+  "devDependencies": {
+    "style-dictionary": "5.8.0"
+  }
+}

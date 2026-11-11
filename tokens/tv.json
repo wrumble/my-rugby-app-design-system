@@ -1,0 +1,67 @@
+{
+  "tv": {
+    "$description": "10-foot (TV) subset. Dimensions: lib/core/tv/tv_dimensions.dart and tvOS DesignTokens.swift (identical where both define a value). Colours: tvOS DesignTokens.swift as shipped; four of them differ from the phone palette and are kept as literals until a reconciliation decision.",
+    "color": {
+      "$type": "color",
+      "bg": { "$value": "{color.chrome.dark.bg}" },
+      "navyBg": { "$value": "{color.navy.dark.bg}" },
+      "navySurface": { "$value": "{color.navy.dark.surface}" },
+      "navyElev": { "$value": "{color.navy.dark.surfaceElevated}" },
+      "navyBorder": { "$value": "{color.navy.dark.border}" },
+      "textPrimary": { "$value": "#F2F2F2", "$description": "tvOS-only literal. Phone chrome text1 is #F0F0F0." },
+      "textMuted": { "$value": "#8A8A8A", "$description": "tvOS-only literal. Phone chrome text2 is #888888." },
+      "live": { "$value": "#FF6B78", "$description": "tvOS-only literal. Phone status.live is #D32F2F." },
+      "success": { "$value": "{color.green.500}" },
+      "warning": { "$value": "#E07B00", "$description": "tvOS-only literal. Phone status.warning is #F57F17." },
+      "accent": { "$value": "#4A7FD4", "$description": "Fallback accent. The Swift source is Color(red: 0.29, green: 0.50, blue: 0.83), within 1/255 of this hex." }
+    },
+    "font": {
+      "postscript": {
+        "$type": "fontFamily",
+        "$description": "PostScript names the tvOS bundle registers.",
+        "display": { "$value": "BebasNeue-Regular" },
+        "body": { "$value": "DMSans-Regular" },
+        "mono": { "$value": "DMMono-Regular" }
+      },
+      "size": {
+        "$type": "dimension",
+        "scoreNumeral": { "$value": { "value": 192, "unit": "px" } },
+        "displayLg": { "$value": { "value": 96, "unit": "px" } },
+        "displayMd": { "$value": { "value": 72, "unit": "px" } },
+        "displaySm": { "$value": { "value": 48, "unit": "px" } },
+        "bodyLg": { "$value": { "value": 36, "unit": "px" } },
+        "bodyMd": { "$value": { "value": 32, "unit": "px" } },
+        "labelUppercase": { "$value": { "value": 28, "unit": "px" } },
+        "captionMd": { "$value": { "value": 24, "unit": "px" } },
+        "minimumReadable": { "$value": { "value": 24, "unit": "px" } }
+      }
+    },
+    "space": {
+      "$type": "dimension",
+      "xs": { "$value": { "value": 12, "unit": "px" } },
+      "sm": { "$value": { "value": 24, "unit": "px" } },
+      "md": { "$value": { "value": 32, "unit": "px" } },
+      "lg": { "$value": { "value": 48, "unit": "px" } },
+      "xl": { "$value": { "value": 64, "unit": "px" } },
+      "xxl": { "$value": { "value": 96, "unit": "px" } },
+      "xxxl": { "$value": { "value": 128, "unit": "px" } }
+    },
+    "focus": {
+      "ringWidth": { "$type": "dimension", "$value": { "value": 4, "unit": "px" } },
+      "ringOutset": { "$type": "dimension", "$value": { "value": 8, "unit": "px" } },
+      "minSize": { "$type": "dimension", "$value": { "value": 96, "unit": "px" } },
+      "scale": { "$type": "number", "$value": 1.06 }
+    },
+    "overscanFraction": { "$type": "number", "$value": 0.05 },
+    "size": {
+      "$type": "dimension",
+      "newsCardWidth": { "$value": { "value": 480, "unit": "px" } },
+      "newsCardHeight": { "$value": { "value": 320, "unit": "px" } },
+      "playerCardWidth": { "$value": { "value": 360, "unit": "px" } },
+      "playerCardHeight": { "$value": { "value": 480, "unit": "px" } },
+      "railHeight": { "$value": { "value": 360, "unit": "px" } },
+      "progressStroke": { "$value": { "value": 6, "unit": "px" } },
+      "dialogMaxWidth": { "$value": { "value": 900, "unit": "px" } }
+    }
+  }
+}

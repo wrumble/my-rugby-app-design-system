@@ -13,4 +13,4 @@ Cross-tool context for AI agents. Estate map, data flow, contracts, `rugby-ci`, 
 
 ## Contracts and tests
 
-No vendored contracts here (see `CONTRACTS.md`), so no `contract-drift` gate. No test suite and no build step.
+No vendored contracts here (see `CONTRACTS.md`), so no `contract-drift` gate. No test suite. `tokens/*.json` (DTCG) builds into `dist/` with `npm run build`; run `npm run check` before a PR and commit `dist/` with the source (see `TOKENS.md`). Until the consumers are switched over, `colors_and_type.css` stays as described above.
