@@ -1,0 +1,54 @@
+{
+  "font": {
+    "$description": "Typography. Source: lib/core/design/tokens/app_typography.dart. Line heights and the two generic letter spacings are web-only values carried from colors_and_type.css.",
+    "family": {
+      "$type": "fontFamily",
+      "display": { "$value": ["Bebas Neue", "Impact", "Arial Narrow", "sans-serif"] },
+      "body": { "$value": ["DM Sans", "Helvetica Neue", "Arial", "sans-serif"] },
+      "mono": { "$value": ["DM Mono", "Courier New", "monospace"] }
+    },
+    "size": {
+      "$type": "dimension",
+      "xs": { "$value": { "value": 11, "unit": "px" } },
+      "sm": { "$value": { "value": 12, "unit": "px" } },
+      "cardTitle": { "$value": { "value": 13, "unit": "px" } },
+      "md": { "$value": { "value": 14, "unit": "px" } },
+      "lg": { "$value": { "value": 16, "unit": "px" } },
+      "body": { "$value": { "value": 17, "unit": "px" } },
+      "xl": { "$value": { "value": 20, "unit": "px" } },
+      "title2": { "$value": { "value": 22, "unit": "px" } },
+      "xxl": { "$value": { "value": 24, "unit": "px" } },
+      "title1": { "$value": { "value": 28, "unit": "px" } },
+      "displayXs": { "$value": { "value": 28, "unit": "px" } },
+      "displaySm": { "$value": { "value": 36, "unit": "px" } },
+      "displayMd": { "$value": { "value": 48, "unit": "px" } },
+      "displayLg": { "$value": { "value": 64, "unit": "px" } },
+      "jerseyGhost": { "$value": { "value": 120, "unit": "px" } }
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "regular": { "$value": 400 },
+      "medium": { "$value": 500 },
+      "semiBold": { "$value": 600 },
+      "bold": { "$value": 700 },
+      "extraBold": { "$value": 800 }
+    },
+    "lineHeight": {
+      "$type": "number",
+      "display": { "$value": 1.1 },
+      "heading": { "$value": 1.35 },
+      "body": { "$value": 1.6 },
+      "caption": { "$value": 1.5 },
+      "mono": { "$value": 1.4 }
+    },
+    "letterSpacing": {
+      "$type": "dimension",
+      "displayLg": { "$value": { "value": 2, "unit": "px" } },
+      "displayMd": { "$value": { "value": 1.5, "unit": "px" } },
+      "displaySm": { "$value": { "value": 1, "unit": "px" } },
+      "displayXs": { "$value": { "value": 1, "unit": "px" } },
+      "onDark": { "$value": { "value": 0.3, "unit": "px" } },
+      "caps": { "$value": { "value": 0.5, "unit": "px" } }
+    }
+  }
+}

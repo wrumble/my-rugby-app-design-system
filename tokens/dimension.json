@@ -1,0 +1,91 @@
+{
+  "space": {
+    "$type": "dimension",
+    "$description": "4pt grid. Source: lib/core/design/tokens/app_dimensions.dart.",
+    "xxs": { "$value": { "value": 4, "unit": "px" } },
+    "xs": { "$value": { "value": 8, "unit": "px" } },
+    "sm": { "$value": { "value": 12, "unit": "px" } },
+    "md": { "$value": { "value": 16, "unit": "px" } },
+    "lg": { "$value": { "value": 20, "unit": "px" } },
+    "xl": { "$value": { "value": 24, "unit": "px" } },
+    "xxl": { "$value": { "value": 32, "unit": "px" } },
+    "xxxl": { "$value": { "value": 40, "unit": "px" } }
+  },
+  "radius": {
+    "$type": "dimension",
+    "xs": { "$value": { "value": 4, "unit": "px" } },
+    "sm": { "$value": { "value": 10, "unit": "px" } },
+    "md": { "$value": { "value": 16, "unit": "px" } },
+    "lg": { "$value": { "value": 24, "unit": "px" } },
+    "pill": { "$value": { "value": 32, "unit": "px" } }
+  },
+  "elevation": {
+    "$type": "number",
+    "$description": "Material elevation in dp. Flutter renders the shadow; web consumers use the `shadow` group.",
+    "none": { "$value": 0 },
+    "low": { "$value": 1 },
+    "medium": { "$value": 4 },
+    "high": { "$value": 8 }
+  },
+  "shadow": {
+    "$type": "shadow",
+    "$description": "Web-only box shadows paired with the elevation steps. Values from the cascade-winning block of colors_and_type.css. Not emitted for Dart or Swift.",
+    "low": {
+      "$value": {
+        "color": "#00000066",
+        "offsetX": { "value": 0, "unit": "px" },
+        "offsetY": { "value": 1, "unit": "px" },
+        "blur": { "value": 2, "unit": "px" },
+        "spread": { "value": 0, "unit": "px" }
+      }
+    },
+    "medium": {
+      "$value": {
+        "color": "#00000080",
+        "offsetX": { "value": 0, "unit": "px" },
+        "offsetY": { "value": 4, "unit": "px" },
+        "blur": { "value": 12, "unit": "px" },
+        "spread": { "value": 0, "unit": "px" }
+      }
+    },
+    "high": {
+      "$value": {
+        "color": "#00000099",
+        "offsetX": { "value": 0, "unit": "px" },
+        "offsetY": { "value": 8, "unit": "px" },
+        "blur": { "value": 24, "unit": "px" },
+        "spread": { "value": 0, "unit": "px" }
+      }
+    }
+  },
+  "breakpoint": {
+    "$type": "dimension",
+    "$description": "Responsive breakpoints. Source: app_dimensions.dart and lib/core/responsive/breakpoints.dart.",
+    "compact": { "$value": { "value": 700, "unit": "px" } },
+    "expanded": { "$value": { "value": 1024, "unit": "px" } },
+    "large": { "$value": { "value": 1280, "unit": "px" } }
+  },
+  "focus": {
+    "$type": "dimension",
+    "ringWidth": { "$value": { "value": 3, "unit": "px" } },
+    "ringOffset": { "$value": { "value": 2, "unit": "px" } }
+  },
+  "size": {
+    "$type": "dimension",
+    "$description": "Fixed component dimensions. Source: app_dimensions.dart.",
+    "minTapTarget": { "$value": { "value": 44, "unit": "px" } },
+    "maxContentWidth": { "$value": { "value": 1200, "unit": "px" } },
+    "heroImageHeight": { "$value": { "value": 220, "unit": "px" } },
+    "playerAvatarRadius": { "$value": { "value": 40, "unit": "px" } },
+    "teamAvatarRadius": { "$value": { "value": 20, "unit": "px" } },
+    "navBarHeight": { "$value": { "value": 56, "unit": "px" } },
+    "appBarHeight": { "$value": { "value": 56, "unit": "px" } },
+    "scrubberMarkerSpikeWidth": { "$value": { "value": 3, "unit": "px" } },
+    "scrubberMarkerSpikeHeight": { "$value": { "value": 20, "unit": "px" } },
+    "scrubberChapterTickWidth": { "$value": { "value": 2, "unit": "px" } },
+    "scrubberChapterTickHeight": { "$value": { "value": 12, "unit": "px" } },
+    "fineScrubStripHeight": { "$value": { "value": 64, "unit": "px" } },
+    "fineScrubCancelDistance": { "$value": { "value": 60, "unit": "px" } },
+    "fineScrubHoldSlop": { "$value": { "value": 24, "unit": "px" } }
+  }
+}

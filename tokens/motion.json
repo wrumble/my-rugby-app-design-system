@@ -1,0 +1,43 @@
+{
+  "motion": {
+    "$description": "Motion. Source: lib/core/design/tokens/app_animation_tokens.dart. Easings are the exact cubic control points of the Flutter curves the app uses (Curves.easeInOut, easeOut, easeOutCubic, easeOutQuad).",
+    "duration": {
+      "$type": "duration",
+      "instant": { "$value": { "value": 0, "unit": "ms" } },
+      "fast": { "$value": { "value": 150, "unit": "ms" } },
+      "medium": { "$value": { "value": 300, "unit": "ms" } },
+      "slow": { "$value": { "value": 500, "unit": "ms" } },
+      "entrance": { "$value": { "value": 600, "unit": "ms" } },
+      "bottomSheetTransition": { "$value": { "value": 250, "unit": "ms" } }
+    },
+    "ease": {
+      "$type": "cubicBezier",
+      "standard": { "$value": [0.42, 0, 0.58, 1] },
+      "decelerate": { "$value": [0, 0, 0.58, 1] },
+      "spring": { "$value": [0.34, 1.56, 0.64, 1] }
+    },
+    "fanZone": {
+      "duration": {
+        "$type": "duration",
+        "pulse": { "$value": { "value": 180, "unit": "ms" } },
+        "bar": { "$value": { "value": 200, "unit": "ms" } },
+        "reveal": { "$value": { "value": 600, "unit": "ms" } },
+        "hold": { "$value": { "value": 8000, "unit": "ms" } },
+        "holdPotm": { "$value": { "value": 12000, "unit": "ms" } },
+        "confetti": { "$value": { "value": 3000, "unit": "ms" } },
+        "countdown": { "$value": { "value": 10000, "unit": "ms" } },
+        "reducedFade": { "$value": { "value": 200, "unit": "ms" } },
+        "flash": { "$value": { "value": 600, "unit": "ms" } },
+        "slideTop": { "$value": { "value": 250, "unit": "ms" } },
+        "highlight": { "$value": { "value": 600, "unit": "ms" } }
+      },
+      "ease": {
+        "$type": "cubicBezier",
+        "pulse": { "$value": [0.215, 0.61, 0.355, 1] },
+        "bar": { "$value": [0.215, 0.61, 0.355, 1] },
+        "reveal": { "$value": [0.16, 1, 0.3, 1] },
+        "flash": { "$value": [0.25, 0.46, 0.45, 0.94] }
+      }
+    }
+  }
+}

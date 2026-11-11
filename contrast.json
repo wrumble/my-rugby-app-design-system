@@ -1,0 +1,48 @@
+{
+  "$comment": "Colour pairs the build checks with the WCAG 2.x contrast formula. min is 4.5 for text and 3 for non-text UI (focus rings, large or bold labels). knownFailure marks a pair that fails today; the build fails if it starts passing, so the flag is removed with the fix.",
+  "pairs": [
+    { "fg": "color.navy.dark.text1", "bg": "color.navy.dark.bg", "min": 4.5, "use": "body text" },
+    { "fg": "color.navy.dark.text2", "bg": "color.navy.dark.bg", "min": 4.5, "use": "secondary text" },
+    { "fg": "color.navy.dark.text3", "bg": "color.navy.dark.bg", "min": 4.5, "use": "muted text", "knownFailure": true },
+    { "fg": "color.navy.dark.text1", "bg": "color.navy.dark.surface", "min": 4.5, "use": "body text" },
+    { "fg": "color.navy.dark.text2", "bg": "color.navy.dark.surface", "min": 4.5, "use": "secondary text" },
+    { "fg": "color.navy.dark.text3", "bg": "color.navy.dark.surface", "min": 4.5, "use": "muted text", "knownFailure": true },
+
+    { "fg": "color.navy.light.text1", "bg": "color.navy.light.bg", "min": 4.5, "use": "body text" },
+    { "fg": "color.navy.light.text2", "bg": "color.navy.light.bg", "min": 4.5, "use": "secondary text" },
+    { "fg": "color.navy.light.text3", "bg": "color.navy.light.bg", "min": 4.5, "use": "muted text", "knownFailure": true },
+    { "fg": "color.navy.light.text1", "bg": "color.navy.light.surface", "min": 4.5, "use": "body text" },
+    { "fg": "color.navy.light.text2", "bg": "color.navy.light.surface", "min": 4.5, "use": "secondary text" },
+    { "fg": "color.navy.light.text3", "bg": "color.navy.light.surface", "min": 4.5, "use": "muted text", "knownFailure": true },
+
+    { "fg": "color.chrome.dark.text1", "bg": "color.chrome.dark.bg", "min": 4.5, "use": "body text" },
+    { "fg": "color.chrome.dark.text2", "bg": "color.chrome.dark.bg", "min": 4.5, "use": "secondary text" },
+    { "fg": "color.chrome.dark.text3", "bg": "color.chrome.dark.bg", "min": 4.5, "use": "tertiary text", "knownFailure": true },
+    { "fg": "color.chrome.dark.text1", "bg": "color.chrome.dark.surface", "min": 4.5, "use": "body text" },
+    { "fg": "color.chrome.dark.text2", "bg": "color.chrome.dark.surface", "min": 4.5, "use": "secondary text" },
+    { "fg": "color.chrome.dark.text3", "bg": "color.chrome.dark.surface", "min": 4.5, "use": "tertiary text", "knownFailure": true },
+    { "fg": "color.chrome.light.text2", "bg": "color.chrome.light.bg", "min": 4.5, "use": "secondary text" },
+
+    { "fg": "color.status.onLive", "bg": "color.status.live", "min": 4.5, "use": "badge label" },
+    { "fg": "color.status.onSuccess", "bg": "color.status.success", "min": 4.5, "use": "badge label" },
+    { "fg": "color.status.onWarning", "bg": "color.status.warning", "min": 4.5, "use": "badge label" },
+    { "fg": "color.status.onAccent", "bg": "color.status.accent", "min": 4.5, "use": "badge label" },
+
+    { "fg": "color.brand.rugbyBlue", "bg": "color.navy.light.surface", "min": 4.5, "use": "text or icon on white" },
+    { "fg": "color.brand.rugbyGold", "bg": "color.navy.light.surface", "min": 4.5, "use": "text or icon on white", "knownFailure": true },
+    { "fg": "color.status.live", "bg": "color.navy.light.surface", "min": 4.5, "use": "text or icon on white" },
+    { "fg": "color.status.success", "bg": "color.navy.light.surface", "min": 4.5, "use": "text or icon on white" },
+    { "fg": "color.status.warning", "bg": "color.navy.light.surface", "min": 4.5, "use": "text or icon on white", "knownFailure": true },
+    { "fg": "color.red.500", "bg": "color.navy.light.surface", "min": 4.5, "use": "text or icon on white", "knownFailure": true },
+    { "fg": "color.red.600", "bg": "color.navy.light.surface", "min": 4.5, "use": "text or icon on white" },
+    { "fg": "color.green.500", "bg": "color.navy.light.surface", "min": 4.5, "use": "text or icon on white", "knownFailure": true },
+    { "fg": "color.amber.500", "bg": "color.navy.light.surface", "min": 4.5, "use": "text or icon on white", "knownFailure": true },
+    { "fg": "color.orange.600", "bg": "color.navy.light.surface", "min": 4.5, "use": "text or icon on white", "knownFailure": true },
+    { "fg": "color.blue.500", "bg": "color.navy.light.surface", "min": 4.5, "use": "text or icon on white" },
+    { "fg": "color.neutralLabel", "bg": "color.navy.light.surface", "min": 3, "use": "large or bold label on white" },
+
+    { "fg": "color.focus.ring", "bg": "color.navy.light.surface", "min": 3, "use": "focus ring on white", "knownFailure": true },
+    { "fg": "color.focus.ring", "bg": "color.navy.dark.bg", "min": 3, "use": "focus ring on navy" },
+    { "fg": "color.focus.ring", "bg": "color.chrome.dark.bg", "min": 3, "use": "focus ring on dark chrome" }
+  ]
+}

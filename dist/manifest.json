@@ -1,0 +1,11 @@
+{
+  "name": "my-rugby-app-design-tokens",
+  "version": "1.0.0",
+  "sourceSha256": "c35bc0c86238ed33806bb53dce541deca7e77f3b85c764be14117bbbaefdf759",
+  "files": {
+    "contrast-report.json": "f0845ec3f95ce0be79342fb2f719cbf234f7f1dd97d9430db47075298f45124b",
+    "css/tokens.css": "8c15158653f72ce425f931ce039c1717e8f7c55d0b033163415de0a23e739f6d",
+    "json/tokens.json": "05a19fa086b5ad2597f772cabfc0c6ff5de5254b8c5d135c30973b15aa143982",
+    "tailwind/theme.css": "35ebaf95b4e144061d0e2af24d5ed019470e2f39759462638cb0680e6ee1244e"
+  }
+}

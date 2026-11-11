@@ -14,8 +14,9 @@ previews/                # 35 cards (no _index.html; navigate via root index.htm
 IMPLEMENTATION_TASKS.md  # ranked Flutter implementation tasks
 CONTRACTS.md             # states this repo consumes no contracts
 GIT_SETUP.md             # historical repo-layout notes
+tokens/ build.mjs dist/  # DTCG token source, Style Dictionary build, generated outputs (see TOKENS.md)
 ```
-No build step, no tests, no CI. View with `open index.html`. GitHub Actions is dead estate-wide; the only machine check touching this repo is `rugby-ci design-drift`.
+The previews have no build step. The token build is `npm run build`; `npm run check` must pass before a PR (see `TOKENS.md`). No tests, no CI. View with `open index.html`. GitHub Actions is dead estate-wide; the only machine check touching this repo is `rugby-ci design-drift`.
 
 ## Rules
 - **Values here, implementation in `my-rugby-app/lib/core/design/tokens/*.dart`.** Change one, change the other in the same logical change. tvOS mirrors the values in `my-rugby-app-tvos/MyRugbyAppTV/Shared/DesignTokens.swift`.

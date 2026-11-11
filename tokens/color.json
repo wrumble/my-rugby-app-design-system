@@ -1,0 +1,192 @@
+{
+  "color": {
+    "$type": "color",
+    "$description": "Colour tokens. Values are the app's staging truth (my-rugby-app develop). Themed groups carry a `dark`, `light` or `hc` path segment.",
+    "brand": {
+      "$description": "Default (no team config) brand seeds. Source: lib/app/theme/app_colors.dart.",
+      "rugbyBlue": { "$value": "#1B3A6B" },
+      "rugbyGold": { "$value": "#C8A44A" }
+    },
+    "neutral": {
+      "$description": "Neutral ramp, numbered by lightness. Source: lib/app/theme/app_colors.dart.",
+      "100": { "$value": "#FFFFFF" },
+      "95": { "$value": "#F5F5F5" },
+      "90": { "$value": "#E5E5E5" },
+      "80": { "$value": "#CCCCCC" },
+      "50": { "$value": "#808080" },
+      "30": { "$value": "#4D4D4D" },
+      "10": { "$value": "#1A1A1A" },
+      "0": { "$value": "#000000" }
+    },
+    "white": { "$value": "#FFFFFF" },
+    "red": {
+      "500": { "$value": "#E63946" },
+      "600": { "$value": "#C4212E" }
+    },
+    "green": {
+      "500": { "$value": "#4CAF50" }
+    },
+    "amber": {
+      "500": { "$value": "#FFB74D" }
+    },
+    "orange": {
+      "600": { "$value": "#E8590C", "$description": "Missed-kick timeline pips." }
+    },
+    "blue": {
+      "500": { "$value": "#1565C0" }
+    },
+    "neutralLabel": {
+      "$value": "#737373",
+      "$description": "Universal-contrast grey, 3:1 on both #FFFFFF and #121212."
+    },
+    "chrome": {
+      "$description": "Neutral chrome that drives ThemeData (scaffold, cards, nav). Source: lib/app/theme/app_colors.dart + app_theme.dart. Light mode is partial on purpose: the app derives the rest from Material ColorScheme.fromSeed.",
+      "dark": {
+        "bg": { "$value": "#080808" },
+        "surface": { "$value": "#111111" },
+        "surfaceElevated": { "$value": "#1A1A1A" },
+        "border": { "$value": "#2A2A2A" },
+        "text1": { "$value": "#F0F0F0" },
+        "text2": { "$value": "#888888" },
+        "text3": { "$value": "#444444" }
+      },
+      "light": {
+        "bg": { "$value": "{color.neutral.95}" },
+        "text2": { "$value": "{color.neutral.30}" }
+      }
+    },
+    "navy": {
+      "$description": "Theme-aware surface and text palette used across features. Source: lib/core/design/tokens/app_colors.dart. Complete in both modes.",
+      "dark": {
+        "bg": { "$value": "#0D0D1A" },
+        "surface": { "$value": "#1A1A2E" },
+        "surfaceElevated": { "$value": "#2A2A44" },
+        "border": { "$value": "#3A3A5C" },
+        "text1": { "$value": "#E0E0F0" },
+        "text2": { "$value": "#8888AA" },
+        "text3": { "$value": "#556677" }
+      },
+      "light": {
+        "bg": { "$value": "#F5F5F5" },
+        "surface": { "$value": "#FFFFFF" },
+        "surfaceElevated": { "$value": "#E8E8EC" },
+        "border": { "$value": "#D0D0D6" },
+        "text1": { "$value": "#0D0D1A" },
+        "text2": { "$value": "#555566" },
+        "text3": { "$value": "#8A8A99" }
+      }
+    },
+    "semantic": {
+      "$description": "Semantic aliases from lib/core/design/tokens/app_colors.dart. Identical in light and dark.",
+      "accent": { "$value": "{color.red.500}" },
+      "success": { "$value": "{color.green.500}" },
+      "successSurface": { "$value": "#0D2B0E" },
+      "warning": { "$value": "{color.amber.500}" },
+      "warningSurface": { "$value": "#2B1D00" },
+      "error": { "$value": "{color.red.500}" },
+      "errorSurface": { "$value": "#2B0A0A" }
+    },
+    "status": {
+      "$description": "Fixed status colours with their on-colours. Source: AppThemeExtension defaults + lib/app/theme/app_colors.dart.",
+      "live": { "$value": "#D32F2F" },
+      "onLive": { "$value": "#FFFFFF" },
+      "success": { "$value": "#2E7D32" },
+      "onSuccess": { "$value": "#FFFFFF" },
+      "warning": { "$value": "#F57F17" },
+      "onWarning": { "$value": "#000000" },
+      "accent": { "$value": "{color.brand.rugbyGold}" },
+      "onAccent": { "$value": "#000000" }
+    },
+    "focus": {
+      "ring": { "$value": "#5B9FFF" },
+      "ringHighContrast": { "$value": "{color.white}" }
+    },
+    "entrance": {
+      "$description": "Match Hub entrance FX palette (decorative, one-shot).",
+      "confettiGold": { "$value": "#FFD166" },
+      "confettiPink": { "$value": "#EF476F" },
+      "confettiMint": { "$value": "#06D6A0" },
+      "flashWarm": { "$value": "#FFEBB4" },
+      "flashHalo": { "$value": "#FFC878" },
+      "flashGold": { "$value": "#C8A44A" }
+    },
+    "matchHub": {
+      "$description": "Match Hub feature colours. Source: lib/features/match_hub/theme/match_hub_theme.dart.",
+      "win": { "$value": "#1B7F3E" },
+      "loss": { "$value": "#B91C1C" },
+      "draw": { "$value": "#78716C" },
+      "lossBg": { "$value": "#3B1010" },
+      "stadiumGrass": { "$value": "#2D6A2D" },
+      "stadiumGrassBorder": { "$value": "#3D8A3D" },
+      "fabSurfaceDark": { "$value": "#2A2A3E" },
+      "fabSurfaceDeep": { "$value": "#17172A" },
+      "yellowCard": { "$value": "#E0A500" },
+      "dark": {
+        "orbGradientStart": { "$value": "{color.navy.dark.surface}" },
+        "orbGradientEnd": { "$value": "{color.red.500}" },
+        "orbBorder": { "$value": "{color.red.500}" },
+        "scoreBackground": { "$value": "{color.navy.dark.surface}" },
+        "scoreText": { "$value": "{color.navy.dark.text1}" },
+        "liveIndicator": { "$value": "{color.red.500}" },
+        "tabBarSurface": { "$value": "{color.chrome.dark.surface}" }
+      },
+      "light": {
+        "orbGradientStart": { "$value": "#2C2C4A" },
+        "orbGradientEnd": { "$value": "{color.red.600}" },
+        "orbBorder": { "$value": "{color.red.600}" },
+        "scoreBackground": { "$value": "{color.navy.light.bg}" },
+        "scoreText": { "$value": "{color.navy.light.text1}" },
+        "liveIndicator": { "$value": "{color.red.500}" },
+        "tabBarSurface": { "$value": "{color.navy.light.surface}" }
+      }
+    },
+    "fanZone": {
+      "$description": "Fan Zone feature colours. Source: lib/core/design/theme/fan_zone_theme.dart. Eight-digit hex is #RRGGBBAA.",
+      "dark": {
+        "voteStreamHome": { "$value": "#5BB0FF" },
+        "voteStreamAway": { "$value": "#FF7B7B" },
+        "leadingHalo": { "$value": "#5B9FFF3D" },
+        "desaturate": { "$value": "#8888AA4D" },
+        "winnerFill": { "$value": "#2E7D32" },
+        "cardYellow": { "$value": "#E8C547" },
+        "cardRed": { "$value": "#E53935" },
+        "cardNone": { "$value": "#8888AA" },
+        "focus": { "$value": "#5B9FFF" },
+        "incidentFlash": { "$value": "#E53935E6" },
+        "rowHighlight": { "$value": "#5B9FFF33" },
+        "surfaceRaised": { "$value": "{color.navy.dark.surfaceElevated}" },
+        "hairline": { "$value": "{color.navy.dark.border}" }
+      },
+      "light": {
+        "voteStreamHome": { "$value": "#1565C0" },
+        "voteStreamAway": { "$value": "#C62828" },
+        "leadingHalo": { "$value": "#5B9FFF33" },
+        "desaturate": { "$value": "#55556633" },
+        "winnerFill": { "$value": "#2E7D32" },
+        "cardYellow": { "$value": "#F1B500" },
+        "cardRed": { "$value": "#C62828" },
+        "cardNone": { "$value": "#555566" },
+        "focus": { "$value": "#1976D2" },
+        "incidentFlash": { "$value": "#C62828E6" },
+        "rowHighlight": { "$value": "#1976D233" },
+        "surfaceRaised": { "$value": "{color.navy.light.surfaceElevated}" },
+        "hairline": { "$value": "{color.navy.light.border}" }
+      },
+      "hc": {
+        "voteStreamHome": { "$value": "#FFFFFF" },
+        "voteStreamAway": { "$value": "#FFFFFF" },
+        "leadingHalo": { "$value": "#FFFFFF66" },
+        "desaturate": { "$value": "#88888866" },
+        "winnerFill": { "$value": "#00C853" },
+        "cardYellow": { "$value": "#FFD600" },
+        "cardRed": { "$value": "#FF1744" },
+        "cardNone": { "$value": "#EEEEEE" },
+        "focus": { "$value": "#FFFFFF" },
+        "incidentFlash": { "$value": "#FF1744F2" },
+        "rowHighlight": { "$value": "#FFFFFF66" },
+        "surfaceRaised": { "$value": "#000000" },
+        "hairline": { "$value": "#FFFFFF" }
+      }
+    }
+  }
+}
