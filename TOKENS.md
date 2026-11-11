@@ -28,6 +28,15 @@ Node 22 or newer. `npm run check` is a codegen check, not a test: it runs locall
 
 Value forms: colours are `#RRGGBB` or `#RRGGBBAA` hex strings; dimensions and durations are `{ "value": n, "unit": "px" | "ms" }`; easings are four-number arrays; aliases are `{group.path}` references. The build rejects anything else.
 
+## Which `colors_and_type.css` block does the source follow?
+
+Neither. `colors_and_type.css` has two top-level `:root` blocks that disagree (a browser applies the second; the app's generator read only the first), so the source follows the app's Dart instead. No consumer reads `dist/` in slice 1, so no shipped value changes. Measured on this change, hex values declared in each block that appear nowhere in the DTCG source:
+
+- First block (7): `--surface-1` #0F0F0F, `--surface-2` #161616, `--border` #1E1E1E, `--text-3` #5A5A5A, `--hc-surface` #0A0A0A, `--hc-text-2` #DDDDDD, `--hc-text-3` #AAAAAA.
+- Second block (10): `--color-text-tertiary-dark` #7E7E7E, `--color-navy-text-muted` #7A8FA3, `--hc-surface` #0D0D0D, `--hc-text-secondary` #E0E0E0, `--hc-text-tertiary` #BBBBBB, `--hc-border` #555555, `--hc-accent` #FFD700, `--hc-live` #FF4444, `--hc-success` #44FF88, `--hc-warning` #FFD700.
+
+These are CSS-only values the app does not use. Moving the CSS and previews onto `dist/` is a later slice, and it will change these values on purpose.
+
 ## Modes: theme and density
 
 A token that varies by mode carries one mode segment in its path. There are two axes:
